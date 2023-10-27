@@ -4,6 +4,7 @@ import Card from "@/components/Card";
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import Intro from '@/pages/intro';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,11 +20,11 @@ export default function Home({ gallery }) {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         las muchachoss
+        <Intro/>
         <div className={styles.homeContainer}>
             {gallery.map((post, i) => (
               <Card key={i} post={post} />
             ))}
-
         </div>
       </main>
     </>

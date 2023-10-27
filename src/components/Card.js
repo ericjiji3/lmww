@@ -4,7 +4,7 @@ import RichText from "./Richtext";
 
 const Card = ({ post }) => {
     const {title, images, description} = post.fields;
-    console.log(images);
+    
     return(
         <>
             <div>
