@@ -26,7 +26,7 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                 realDelta = e.deltaY;
             }
 
-            let elementPos = listRef.current[activePhoto].current.getBoundingClientRect();
+           
             // let centerPos = elementPos[0].left + ((elementPos[0].right - elementPos[0].left)/2);
             let centerPos = window.innerWidth/2;
             console.log('ELEM POS: ', centerPos);
@@ -35,33 +35,34 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
             let scrollIncrement = centerPos/20;
             console.log('scrollIncr: ', scrollIncrement);
             if(realDelta >= 0){
-                setScrollPos(Math.round(scrollPos + realDelta/100));
-                console.log('scroll position: ' , scrollPos);
-                listRef.current[activePhoto].current.style.width = `${listRef.current[activePhoto].current.offsetWidth + (realDelta/5)}px`;
-                console.log('width: ', listRef.current[activePhoto].current.offsetWidth);
-                
-                if(activePhoto % 2 == 0){
-                    console.log('style.left: ', listRef.current[activePhoto].current.style.left);
-                    console.log('getClientRect: ', elementPos.left);
-                    console.log('right position: ', elementPos.right);
-                    console.log('window width: ', window.innerWidth);
-                    listRef.current[activePhoto].current.style.left = `${elementPos.left - scrollIncrement}px`;
-                }else{
-                    console.log('style.left: ', listRef.current[activePhoto].current.style.left);
-                    console.log('getClientRect: ', elementPos.left);
-                    console.log('window width: ', window.innerWidth);
-                    console.log('calculate: ', elementPos.left + scrollIncrement);
-                    listRef.current[activePhoto].current.style.left = `${elementPos.left + 150}px`;
-                    
-                }
+
                 if(activePhoto < introPhotos[0].fields.images.length - 1 ){
                     if(scrollPos % 11 == 0){
                         console.log('scroll position hit: ' , scrollPos);
                         setActivePhoto(scrollPos / 11);
-                        listRef.current[activePhoto].current.style.left = window.innerWidth/2;
+                        listRef.current[activePhoto].current.style.left = window.innerWidth/2 - listRef.current[activePhoto].current.offsetWidth/2;
                         console.log('active photo: ' , activePhoto);
+                        console.log('INIT STYLE LEFT: ', listRef.current[activePhoto].current.style.left);
                     }
-    
+                    setScrollPos(Math.round(scrollPos + realDelta/100));
+                    console.log('scroll position: ' , scrollPos);
+                    listRef.current[activePhoto].current.style.width = `${listRef.current[activePhoto].current.offsetWidth + (realDelta/5)}px`;
+                    console.log('width: ', listRef.current[activePhoto].current.offsetWidth);
+                    let elementPos = listRef.current[activePhoto].current.getBoundingClientRect();
+                    if(activePhoto % 2 == 0){
+                        console.log('style.left: ', listRef.current[activePhoto].current.style.left);
+                        console.log('getClientRect: ', elementPos.left);
+                        console.log('right position: ', elementPos.right);
+                        console.log('window width: ', window.innerWidth);
+                        listRef.current[activePhoto].current.style.left = `${elementPos.left - (scrollIncrement)}px`;
+                    }else{
+                        console.log('style.left: ', listRef.current[activePhoto].current.style.left);
+                        console.log('getClientRect: ', elementPos.left);
+                        console.log('window width: ', window.innerWidth);
+                        console.log('calculate: ', elementPos.left + scrollIncrement);
+                        listRef.current[activePhoto].current.style.right= `${elementPos.right - (scrollIncrement)}px`;
+                        
+                    }
                 }else{
                     console.log('MAX PH0TO');
                     console.log('active photo: ' , activePhoto);
@@ -89,6 +90,7 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                                 className={`${styles.photo}`}
                                 quality='100'
                                 alt="oops"
+                                priority
                             />
                         </div>
                         
