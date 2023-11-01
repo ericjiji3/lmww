@@ -1,0 +1,8 @@
+.countdownContainer{
+    text-align: center;
+    margin-top: 15px;
+}
+.countdownContainer span{
+    font-size: 3em;
+    font-weight: bold;
+}

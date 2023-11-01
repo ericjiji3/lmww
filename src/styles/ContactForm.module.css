@@ -1,0 +1,18 @@
+.contactContainer .contactForm{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+.contactContainer .contactForm .submitButt{
+    margin-top: 10px;
+    font-size: 1em;
+    font-weight: bold;
+}
+@media(max-width: 700px){
+    .contactContainer .contactForm{
+        width: 90%;
+    }
+}
