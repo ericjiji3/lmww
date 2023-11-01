@@ -12,20 +12,20 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
     listRef.current = introPhotos[0].fields.images.map((_, i) => listRef.current[i] ?? React.createRef());
     const [scrollPos, setScrollPos ] = useState(0);
     const [activePhoto, setActivePhoto ] = useState(0);
-    var imagePos = {
-        'left': [],
-        'right': []
-    }
+    // var imagePos = {
+    //     'left': [],
+    //     'right': []
+    // }
 
-    useEffect(()=>{
-        var scrollIncrement = window.innerWidth/24;
+    // useEffect(()=>{
+    //     var scrollIncrement = window.innerWidth/24;
         
     
-        for(var i=1;i<=13;i++){
-            imagePos.left.push((window.innerWidth/2) - (i*scrollIncrement));
-            imagePos.right.push((window.innerWidth/2) + (i*scrollIncrement));
-        }
-    }, [])
+    //     for(var i=1;i<=13;i++){
+    //         imagePos.left.push((window.innerWidth/2) - (i*scrollIncrement));
+    //         imagePos.right.push((window.innerWidth/2) + (i*scrollIncrement));
+    //     }
+    // }, [])
     
 
     
@@ -35,7 +35,6 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
         //this is window width / 2 / 12(# of increments)
 
     
-        console.log(imagePos);
         const handleScroll = (e) =>{
             var realDelta = e.deltaY;
             if(Math.abs(e.deltaY) == 1){
@@ -46,31 +45,31 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                 realDelta = e.deltaY;
             }
 
-            if(realDelta >= 0){
-                if(activePhoto < introPhotos[0].fields.images.length - 1){
-                    setScrollPos(Math.round(scrollPos + realDelta/100));
-                    console.log('SCROLL POS: ', scrollPos);
-                    if(scrollPos % 12 == 0 && scrollPos != 0){
-                        setActivePhoto(activePhoto + 1);
-                        console.log('scrollCount: ', scrollPos/12);
-                        console.log('active photo: ', activePhoto);
-                        listRef.current[activePhoto].current.style.left = window.innerWidth/2 - listRef.current[activePhoto].current.offsetWidth/2;
+            // if(realDelta >= 0){
+            //     if(activePhoto < introPhotos[0].fields.images.length - 1){
+            //         setScrollPos(Math.round(scrollPos + realDelta/100));
+            //         console.log('SCROLL POS: ', scrollPos);
+            //         if(scrollPos % 12 == 0 && scrollPos != 0){
+            //             setActivePhoto(activePhoto + 1);
+            //             console.log('scrollCount: ', scrollPos/12);
+            //             console.log('active photo: ', activePhoto);
+            //             listRef.current[activePhoto].current.style.left = window.innerWidth/2 - listRef.current[activePhoto].current.offsetWidth/2;
 
-                    }
+            //         }
                     
-                    listRef.current[activePhoto].current.style.width = `${listRef.current[activePhoto].current.offsetWidth + (realDelta/5)}px`;
-                    if(activePhoto % 2 == 0){
+            //         listRef.current[activePhoto].current.style.width = `${listRef.current[activePhoto].current.offsetWidth + (realDelta/5)}px`;
+            //         if(activePhoto % 2 == 0){
                         
-                        console.log('POsition scrolledTo: ', imagePos.left[scrollPos]);
-                        listRef.current[activePhoto].current.style.left = `${imagePos.left[scrollPos]}px`;
-                    }else{
+            //             console.log('POsition scrolledTo: ', imagePos.left[scrollPos]);
+            //             listRef.current[activePhoto].current.style.left = `${imagePos.left[scrollPos]}px`;
+            //         }else{
                         
-                        console.log('POsition scrolledTo: ', imagePos.right[scrollPos]);
-                        listRef.current[activePhoto].current.style.left= `${imagePos.right[scrollPos]}px`;
+            //             console.log('POsition scrolledTo: ', imagePos.right[scrollPos]);
+            //             listRef.current[activePhoto].current.style.left= `${imagePos.right[scrollPos]}px`;
                         
-                    }
-                }
-            }
+            //         }
+            //     }
+            // }
             // let centerPos = elementPos[0].left + ((elementPos[0].right - elementPos[0].left)/2);
             // let centerPos = window.innerWidth/2;
             // console.log('ELEM POS: ', centerPos);
