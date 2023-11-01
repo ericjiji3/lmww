@@ -26,14 +26,14 @@ export default function Home({ gallery, introductionPhotos }) {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>LMW</title>
         <meta name="description" content="Las Muchachos World Wide" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <Intro introPhotos={introductionPhotos} setIntroFinish={setIntroFinish}/> */}
       <main className={introFinish ? `${styles.main} ${styles.active}` : `${styles.main}`}>
-        <h1>ERROR...CONTENT UNDER CONSTRUCTION</h1>
+        <p>ERROR...CONTENT UNDER CONSTRUCTION</p>
         <CountdownTimer/>
         <div className={styles.logo}>
           <ContentfulImage
@@ -46,24 +46,17 @@ export default function Home({ gallery, introductionPhotos }) {
           />
         </div>
         <div className={styles.givePhotos}>
-          <ContentfulImage
-              src={Give1}
+        <ContentfulImage
+              src={Give3}
               width={250}
               className={`${styles.photo}`}
               quality='100'
               alt="oops"
               priority
           />
+          
           <ContentfulImage
               src={Give2}
-              width={250}
-              className={`${styles.photo}`}
-              quality='100'
-              alt="oops"
-              priority
-          />
-          <ContentfulImage
-              src={Give3}
               width={250}
               className={`${styles.photo}`}
               quality='100'
@@ -78,6 +71,15 @@ export default function Home({ gallery, introductionPhotos }) {
               alt="oops"
               priority
           />
+          <ContentfulImage
+              src={Give1}
+              width={250}
+              className={`${styles.photo}`}
+              quality='100'
+              alt="oops"
+              priority
+          />
+          
         </div>
         <ContactForm/>
         {/* <div className={styles.homeContainer}>
