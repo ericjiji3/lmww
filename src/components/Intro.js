@@ -33,6 +33,7 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
         console.log('hello');
         console.log(window.innerWidth/12);
         //this is window width / 2 / 12(# of increments)
+        
 
     
         const handleScroll = (e) =>{
