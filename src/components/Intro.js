@@ -16,18 +16,24 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
     
     
     useEffect(()=>{
-        console.log(scrollPos);
+        console.log("scroll pos: ", scrollPos);
         // console.log(window.innerWidth/12);
         //this is window width / 2 / 12(# of increments)
         console.log('active photo: ' , activePhoto);
-        if(activePhoto < introPhotos[0].fields.images.length - 1){
-            if(scrollPos % 11 == 0){
+        console.log('step: ', step)
+        if(activePhoto < introPhotos[0].fields.images.length - 3){
+            if(scrollPos % 8 == 0){
                 console.log('scroll position hit: ' , scrollPos);
-                setActivePhoto(scrollPos/11);
+                setActivePhoto(scrollPos/8);
                 setStep(0);
-                listRef.current[activePhoto].current.style.left = window.innerWidth/2 - listRef.current[activePhoto].current.offsetWidth/2;
                 
                 console.log('INIT STYLE LEFT: ', listRef.current[activePhoto].current.style.left);
+            }
+        }else{
+            if(scrollPos % 8 == 0){
+                console.log('LAST 3 IMAGES');
+                setActivePhoto(scrollPos/8);
+                setStep(10);
             }
         }
     
@@ -41,7 +47,26 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                 realDelta = e.deltaY;
             }
             setScrollPos(Math.round(scrollPos + realDelta/100));
-            setStep(scrollPos % 11);
+            if(activePhoto < introPhotos[0].fields.images.length - 3){
+                if(activePhoto % 2 == 0){
+                    setStep(scrollPos % 8);
+                }else{
+                    setStep(-(scrollPos % 8));
+                    console.log('odd photo: ', step);
+                }
+            }else{
+                if(scrollPos % 10 == 0){
+                    if(step == 10){
+                        setStep(20);
+                    }else{
+                        setStep((scrollPos % 10) * 10);
+                    }
+                    
+                }
+                
+            }
+            
+            
             // if(realDelta >= 0){
             //     if(activePhoto < introPhotos[0].fields.images.length - 1){
             //         setScrollPos(Math.round(scrollPos + realDelta/100));
