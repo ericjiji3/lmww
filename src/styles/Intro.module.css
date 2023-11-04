@@ -16,7 +16,70 @@
     transform: translate(-50%, -50%);
     width: 0px;
     height: auto;
+    transition: .1s;
 } 
+.introContainer .photosContainer .photoContainer[data-step="0"]{
+    display: none;
+}
+.introContainer .photosContainer .photoContainer.active{
+    width: 50px;
+    display: block;
+}
+.introContainer .photosContainer .photoContainer.active[data-step="0"]
+{
+    left: 50%;
+    width: 75px;
+}
+.introContainer .photosContainer .photoContainer.active[data-step="1"]
+{
+    left: 45%;
+    width: 100px;
+}
+.introContainer .photosContainer .photoContainer.active[data-step="2"]
+{
+    left: 40%;
+    width: 125px;
+}
+.introContainer .photosContainer .photoContainer.active[data-step="3"]
+{
+    left: 35%;
+    width: 150px;
+}
+.introContainer .photosContainer .photoContainer.active[data-step="4"]
+{
+    left: 30%;
+    width: 175px;
+}
+.introContainer .photosContainer .photoContainer.active[data-step="5"]
+{
+    left: 25%;
+    width: 200px;
+}
+.introContainer .photosContainer .photoContainer.active[data-step="6"]
+{
+    left: 20%;
+    width: 250px;
+}
+.introContainer .photosContainer .photoContainer.active[data-step="7"]
+{
+    left: 15%;
+    width: 300px;
+}
+.introContainer .photosContainer .photoContainer.active[data-step="8"]
+{
+    left: 10%;
+    width: 325px;
+}
+.introContainer .photosContainer .photoContainer.active[data-step="9"]
+{
+    left: 5%;
+    width: 350px;
+}
+.introContainer .photosContainer .photoContainer.active[data-step="10"]
+{
+    left: 0%;
+    width: 375px;
+}
 .introContainer .photosContainer .photoContainer .photo{
     width: 100%;
     height: auto;

@@ -11,30 +11,25 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
     const listRef = React.useRef([]);
     listRef.current = introPhotos[0].fields.images.map((_, i) => listRef.current[i] ?? React.createRef());
     const [scrollPos, setScrollPos ] = useState(0);
+    const [step, setStep ] = useState(0);
     const [activePhoto, setActivePhoto ] = useState(0);
-    // var imagePos = {
-    //     'left': [],
-    //     'right': []
-    // }
-
-    // useEffect(()=>{
-    //     var scrollIncrement = window.innerWidth/24;
-        
     
-    //     for(var i=1;i<=13;i++){
-    //         imagePos.left.push((window.innerWidth/2) - (i*scrollIncrement));
-    //         imagePos.right.push((window.innerWidth/2) + (i*scrollIncrement));
-    //     }
-    // }, [])
-    
-
     
     useEffect(()=>{
-        console.log('hello');
-        console.log(window.innerWidth/12);
+        console.log(scrollPos);
+        // console.log(window.innerWidth/12);
         //this is window width / 2 / 12(# of increments)
-        
-
+        console.log('active photo: ' , activePhoto);
+        if(activePhoto < introPhotos[0].fields.images.length - 1){
+            if(scrollPos % 11 == 0){
+                console.log('scroll position hit: ' , scrollPos);
+                setActivePhoto(scrollPos/11);
+                setStep(0);
+                listRef.current[activePhoto].current.style.left = window.innerWidth/2 - listRef.current[activePhoto].current.offsetWidth/2;
+                
+                console.log('INIT STYLE LEFT: ', listRef.current[activePhoto].current.style.left);
+            }
+        }
     
         const handleScroll = (e) =>{
             var realDelta = e.deltaY;
@@ -45,7 +40,8 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
             }else{
                 realDelta = e.deltaY;
             }
-
+            setScrollPos(Math.round(scrollPos + realDelta/100));
+            setStep(scrollPos % 11);
             // if(realDelta >= 0){
             //     if(activePhoto < introPhotos[0].fields.images.length - 1){
             //         setScrollPos(Math.round(scrollPos + realDelta/100));
@@ -117,7 +113,7 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
         return()=>{
             window.removeEventListener('wheel', handleScroll);
         }
-    }, [scrollPos, activePhoto])
+    }, [scrollPos, activePhoto, step])
     return(
         <>
             <div className={styles.introContainer}>
@@ -126,7 +122,7 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                 
                 {introPhotos[0].fields.images && introPhotos[0].fields.images.map((photo, i) => {
                     return(
-                        <div key={i} className={`${styles.photoContainer}`} ref={listRef.current[i]}>
+                        <div key={i} className={activePhoto == i ? `${styles.photoContainer} ${styles.active}` : `${styles.photoContainer}`} data-step={step} ref={listRef.current[i]}>
                             <ContentfulImage
                                 src={photo.fields.file.url}
                                 width={photo.fields.file.details.image.width}
