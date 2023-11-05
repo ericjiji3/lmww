@@ -13,6 +13,7 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
     const [scrollPos, setScrollPos ] = useState(0);
     const [step, setStep ] = useState(0);
     const [activePhoto, setActivePhoto ] = useState(0);
+    const [hideIntro, setHideIntro] = useState(false);
     
     
     useEffect(()=>{
@@ -26,14 +27,18 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                 console.log('scroll position hit: ' , scrollPos);
                 setActivePhoto(scrollPos/8);
                 setStep(0);
-                
-                console.log('INIT STYLE LEFT: ', listRef.current[activePhoto].current.style.left);
             }
         }else{
             if(scrollPos % 8 == 0){
-                console.log('LAST 3 IMAGES');
-                setActivePhoto(scrollPos/8);
-                setStep(10);
+                if(activePhoto == introPhotos[0].fields.images.length - 1 && step == 90){
+                    setHideIntro(true);
+                    setIntroFinish(true);
+                }else{
+                    console.log('LAST 3 IMAGES');
+                    setActivePhoto(scrollPos/8);
+                    setStep(10);
+                }
+                
             }
         }
     
@@ -55,93 +60,24 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                     console.log('odd photo: ', step);
                 }
             }else{
-                if(scrollPos % 10 == 0){
                     if(step == 10){
                         setStep(20);
                     }else{
-                        setStep((scrollPos % 10) * 10);
+                        console.log("huh");
+                        setStep(((scrollPos % 8) + 2) * 10);
                     }
-                    
-                }
-                
             }
             
-            
-            // if(realDelta >= 0){
-            //     if(activePhoto < introPhotos[0].fields.images.length - 1){
-            //         setScrollPos(Math.round(scrollPos + realDelta/100));
-            //         console.log('SCROLL POS: ', scrollPos);
-            //         if(scrollPos % 12 == 0 && scrollPos != 0){
-            //             setActivePhoto(activePhoto + 1);
-            //             console.log('scrollCount: ', scrollPos/12);
-            //             console.log('active photo: ', activePhoto);
-            //             listRef.current[activePhoto].current.style.left = window.innerWidth/2 - listRef.current[activePhoto].current.offsetWidth/2;
-
-            //         }
-                    
-            //         listRef.current[activePhoto].current.style.width = `${listRef.current[activePhoto].current.offsetWidth + (realDelta/5)}px`;
-            //         if(activePhoto % 2 == 0){
-                        
-            //             console.log('POsition scrolledTo: ', imagePos.left[scrollPos]);
-            //             listRef.current[activePhoto].current.style.left = `${imagePos.left[scrollPos]}px`;
-            //         }else{
-                        
-            //             console.log('POsition scrolledTo: ', imagePos.right[scrollPos]);
-            //             listRef.current[activePhoto].current.style.left= `${imagePos.right[scrollPos]}px`;
-                        
-            //         }
-            //     }
-            // }
-            // let centerPos = elementPos[0].left + ((elementPos[0].right - elementPos[0].left)/2);
-            // let centerPos = window.innerWidth/2;
-            // console.log('ELEM POS: ', centerPos);
-            // console.log('SCROLL: ', e.deltaY);
-            // console.log('center pos: ', centerPos);
-            // let scrollIncrement = centerPos/20;
-            // console.log('scrollIncr: ', scrollIncrement);
-            // if(realDelta >= 0){
-
-            //     if(activePhoto < introPhotos[0].fields.images.length - 1 ){
-            //         if(scrollPos % 11 == 0){
-            //             console.log('scroll position hit: ' , scrollPos);
-            //             setActivePhoto(scrollPos / 11);
-            //             listRef.current[activePhoto].current.style.left = window.innerWidth/2 - listRef.current[activePhoto].current.offsetWidth/2;
-            //             console.log('active photo: ' , activePhoto);
-            //             console.log('INIT STYLE LEFT: ', listRef.current[activePhoto].current.style.left);
-            //         }
-            //         setScrollPos(Math.round(scrollPos + realDelta/100));
-            //         console.log('scroll position: ' , scrollPos);
-            //         listRef.current[activePhoto].current.style.width = `${listRef.current[activePhoto].current.offsetWidth + (realDelta/5)}px`;
-            //         console.log('width: ', listRef.current[activePhoto].current.offsetWidth);
-            //         let elementPos = listRef.current[activePhoto].current.getBoundingClientRect();
-            //         if(activePhoto % 2 == 0){
-            //             console.log('style.left: ', listRef.current[activePhoto].current.style.left);
-            //             console.log('getClientRect: ', elementPos.left);
-            //             console.log('right position: ', elementPos.right);
-            //             console.log('window width: ', window.innerWidth);
-            //             listRef.current[activePhoto].current.style.left = `${elementPos.left - (scrollIncrement)}px`;
-            //         }else{
-            //             console.log('style.left: ', listRef.current[activePhoto].current.style.left);
-            //             console.log('getClientRect: ', elementPos.left);
-            //             console.log('window width: ', window.innerWidth);
-            //             console.log('calculate: ', elementPos.left + scrollIncrement);
-            //             listRef.current[activePhoto].current.style.right= `${elementPos.right - (scrollIncrement)}px`;
-                        
-            //         }
-            //     }else{
-            //         console.log('MAX PH0TO');
-            //         console.log('active photo: ' , activePhoto);
-            //     }
-            // }
+        
         };
         window.addEventListener('wheel', handleScroll);
         return()=>{
             window.removeEventListener('wheel', handleScroll);
         }
-    }, [scrollPos, activePhoto, step])
+    }, [scrollPos, activePhoto, step, hideIntro])
     return(
         <>
-            <div className={styles.introContainer}>
+            <div className={hideIntro ? `${styles.introContainer} ${styles.inactive}`: `${styles.introContainer}`}>
                 
                 <div className={styles.photosContainer}>
                 

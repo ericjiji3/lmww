@@ -4,6 +4,9 @@
     height: 100vh;
     overflow: hidden;
 }
+.introContainer.inactive{
+    display: none;
+}
 .introContainer .photosContainer{
     position: relative;
     width: 100%;
@@ -149,13 +152,13 @@
 }
 .introContainer .photosContainer .photoContainer.active[data-step="80"]
 {
-    width: 1450vw;
+    width: 11000vw;
 }
 .introContainer .photosContainer .photoContainer.active[data-step="90"]
 {
-    width: 1850vw;
+    width: 11000vw;
 }
-.introContainer .photosContainer .photoContainer.active[data-step="100"]
+/* .introContainer .photosContainer .photoContainer.active[data-step="100"]
 {
     width: 2300vw;
 }
@@ -166,4 +169,4 @@
 .introContainer .photosContainer .photoContainer.active[data-step="120"]
 {
     width: 10000vw;
-}
+} */

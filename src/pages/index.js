@@ -14,7 +14,6 @@ import { useState } from 'react';
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({ gallery, introductionPhotos }) {
-  // console.log(gallery);
   const [introFinish, setIntroFinish] = useState(false);
 
 
