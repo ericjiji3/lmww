@@ -1,0 +1,15 @@
+.photoSection{
+    
+}
+.swiper{
+    padding-bottom: 30px!important;
+}
+.photoSection .contentContainer{
+   display: flex;
+}
+.photoSection .contentContainer .titleDescription{
+    width: 30%;
+}
+.photoSection .carousel .contentContainer .photo{
+    float: right;
+}

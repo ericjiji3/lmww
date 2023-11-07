@@ -6,6 +6,7 @@ import Logo from '../../public/images/combinedOutlineLogo.png';
 import Card from "@/components/Card";
 import Intro from '@/components/Intro';
 import MusicVideoSection from "@/components/MusicVideoSection";
+import PhotoSection from "@/components/PhotoSection";
 // import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
@@ -29,7 +30,8 @@ export default function Home({ gallery, introductionPhotos, musicVideoSection })
       <Intro introPhotos={introductionPhotos} setIntroFinish={setIntroFinish}/>
       <main className={introFinish ? `${styles.main} ${styles.active}` : `${styles.main}`}>
         <div className={styles.homeContainer}>
-            <MusicVideoSection musicVideosData={musicVideoSection}/>
+            <MusicVideoSection musicVideosData={musicVideoSection[1]}/>
+            <PhotoSection photosData={musicVideoSection[0]}/>
             {gallery.map((post, i) => (
               <Card key={i} post={post} />
             ))}
@@ -43,6 +45,7 @@ export const getStaticProps = async() => {
   const galleryData = await client.getEntries({ content_type: "gallery" });
   const introData = await client.getEntries({ content_type: "introductionPage" });
   const musicVideoSectionData = await client.getEntries({ content_type: "musicVideos" });
+
   
   return {
     props: {

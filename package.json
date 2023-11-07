@@ -15,7 +15,8 @@
     "contentful": "^10.6.5",
     "next": "14.0.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "swiper": "^11.0.3"
   },
   "devDependencies": {
     "eslint": "^8",
