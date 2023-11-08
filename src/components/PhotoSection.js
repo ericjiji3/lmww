@@ -33,8 +33,7 @@ const PhotoSection = ({ photosData }) => {
                     pagination="true"
                     loop="true"
                     className={`${styles.carousel}`}
-                    nested="true"
-                    virtual="true"
+
                 >
                 {photosData.fields.reference.map((photoData, i) => {
                     return(
@@ -51,8 +50,7 @@ const PhotoSection = ({ photosData }) => {
                                     pagination="true"
                                     loop="true"
                                     className={`${styles.carousel}`}
-                                    nested="true"
-                                    virtual="true"  
+                                    style={{width : 500}}
                                 >
                                 {
                                     photoData.fields.media.map((photo, i) => {

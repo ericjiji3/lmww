@@ -8,7 +8,7 @@
    display: flex;
 }
 .photoSection .contentContainer .titleDescription{
-    width: 30%;
+    /* width: 30%; */
 }
 .photoSection .carousel .contentContainer .photo{
     float: right;

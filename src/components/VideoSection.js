@@ -1,14 +1,14 @@
 import ContentfulImage from "./ContentfulImage";
 import RichText from "./Richtext";
-import styles from '@/styles/MusicVideoSection.module.css';
+import styles from '@/styles/VideoSection.module.css';
 import { useRef, useEffect } from 'react';
 import { register } from 'swiper/element/bundle';
 
 register();
 
-const MusicVideoSection = ({ musicVideosData }) => {
+const VideoSection = ({ videosData }) => {
     const swiperElRef = useRef(null);
-    console.log(musicVideosData);
+    console.log(videosData);
 
     useEffect(() => {
         // listen for Swiper events using addEventListener
@@ -33,7 +33,7 @@ const MusicVideoSection = ({ musicVideosData }) => {
                     loop="true"
                     className={`${styles.carousel}`}
                 >
-                {musicVideosData.fields.reference.map((videoData, i) => {
+                {videosData.fields.reference.map((videoData, i) => {
                     return(
                         <swiper-slide key={i} style={{paddingBottom : 30}}>
                             <div className={`${styles.contentContainer}`}>
@@ -60,4 +60,4 @@ const MusicVideoSection = ({ musicVideosData }) => {
     )
 }
 
-export default MusicVideoSection;
+export default VideoSection;

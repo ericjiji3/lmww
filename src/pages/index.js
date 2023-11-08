@@ -5,7 +5,7 @@ import ContentfulImage from '@/components/ContentfulImage';
 import Logo from '../../public/images/combinedOutlineLogo.png';
 import Card from "@/components/Card";
 import Intro from '@/components/Intro';
-import MusicVideoSection from "@/components/MusicVideoSection";
+import VideoSection from "@/components/VideoSection";
 import PhotoSection from "@/components/PhotoSection";
 // import Image from 'next/image'
 import { Inter } from 'next/font/google'
@@ -15,9 +15,9 @@ import { useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({ gallery, introductionPhotos, musicVideoSection }) {
+export default function Home({ gallery, introductionPhotos, videoSection }) {
   const [introFinish, setIntroFinish] = useState(false);
-
+  console.log(VideoSection);
 
   return (
     <>
@@ -30,11 +30,9 @@ export default function Home({ gallery, introductionPhotos, musicVideoSection })
       <Intro introPhotos={introductionPhotos} setIntroFinish={setIntroFinish}/>
       <main className={introFinish ? `${styles.main} ${styles.active}` : `${styles.main}`}>
         <div className={styles.homeContainer}>
-            <MusicVideoSection musicVideosData={musicVideoSection[1]}/>
-            <PhotoSection photosData={musicVideoSection[0]}/>
-            {gallery.map((post, i) => (
-              <Card key={i} post={post} />
-            ))}
+            <VideoSection videosData={videoSection[2]}/>
+            <PhotoSection photosData={videoSection[1]}/>
+            <VideoSection videosData={videoSection[0]}/>
         </div>
       </main>
     </>
@@ -44,14 +42,14 @@ export default function Home({ gallery, introductionPhotos, musicVideoSection })
 export const getStaticProps = async() => {
   const galleryData = await client.getEntries({ content_type: "gallery" });
   const introData = await client.getEntries({ content_type: "introductionPage" });
-  const musicVideoSectionData = await client.getEntries({ content_type: "musicVideos" });
+  const videoSectionData = await client.getEntries({ content_type: "musicVideos" });
 
   
   return {
     props: {
       gallery: galleryData.items,
       introductionPhotos: introData.items,
-      musicVideoSection: musicVideoSectionData.items,
+      videoSection: videoSectionData.items,
       revalidate: 70,
     }
   }
