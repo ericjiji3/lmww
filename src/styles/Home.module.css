@@ -1,5 +1,10 @@
 .main{
   display: none;
+  max-width: 1170px;
+  padding-right: 45px;
+  padding-left: 45px;
+  margin-right: auto;
+  margin-left: auto;
   
 }
 .main.active{

@@ -1,0 +1,9 @@
+.aboutSection{
+    
+}
+.aboutSection .header{
+    text-align: center;
+}
+.aboutSection .contentContainer{
+    display: inline-block;
+}

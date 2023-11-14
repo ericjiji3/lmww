@@ -7,6 +7,7 @@ import Card from "@/components/Card";
 import Intro from '@/components/Intro';
 import VideoSection from "@/components/VideoSection";
 import PhotoSection from "@/components/PhotoSection";
+import AboutSection from "@/components/About";
 // import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
@@ -30,9 +31,10 @@ export default function Home({ gallery, introductionPhotos, videoSection }) {
       <Intro introPhotos={introductionPhotos} setIntroFinish={setIntroFinish}/>
       <main className={introFinish ? `${styles.main} ${styles.active}` : `${styles.main}`}>
         <div className={styles.homeContainer}>
-            <VideoSection videosData={videoSection[2]}/>
-            <PhotoSection photosData={videoSection[1]}/>
-            <VideoSection videosData={videoSection[0]}/>
+            <VideoSection videosData={videoSection[3]}/>
+            <PhotoSection photosData={videoSection[2]}/>
+            <VideoSection videosData={videoSection[1]}/>
+            <AboutSection aboutData={videoSection[0]}/>
         </div>
       </main>
     </>
