@@ -1,8 +1,21 @@
 import styles from '@/styles/Header.module.css';
 import Image from 'next/image';
 import Logo from '../../public/images/blackLogo.png';
+import { useEffect, useState } from 'react';
 
 const Header = () =>{
+    const [ClockState, setClockState] = useState();
+
+    useEffect(() => {
+      setInterval(() => {
+        const date = new Date();
+        const CST = date.toLocaleTimeString('en-US',{
+          timeZone: 'CST'
+        });
+        setClockState(CST);
+      }, [1000]);
+    }, []);
+
     return(
         <>
             <header className={`${styles.headerContainer}`}>
@@ -16,7 +29,7 @@ const Header = () =>{
                     <div className={`${styles.logoContainer}`}>
                         <span>AUSTIN, TEXAS</span>
                         <h1>Las Muchachos Worldwide</h1>
-                        <span>CURRENT TIME</span>
+                        <span className={`${styles.time}`}>{ClockState}</span>
                     </div>
                     
                     <Image
