@@ -8,7 +8,7 @@ const GearSection = ({ gearsData}) => {
 
     return(
         <>
-            <div className={`container ${styles.gearSection}`}>
+            <div className={`${styles.gearSection}`}>
                 <RichText content={gearsData.fields.gearGeneralDescription}/>
                 {gearsData.fields.gearField.map((gearData, i) => {
                     return(

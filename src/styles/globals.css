@@ -127,3 +127,16 @@ a {
   margin-right: auto;
   margin-left: auto;
 }
+
+#musicVideos .videoSection{
+  display: flex;
+}
+swiper-container::part(button-next){
+  color: #000000;
+}
+swiper-container::part(button-prev){
+  color: #000000;
+}
+swiper-container::part(bullet-active) {
+  background-color: #000000;
+}

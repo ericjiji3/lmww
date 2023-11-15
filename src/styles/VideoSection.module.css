@@ -2,9 +2,14 @@
     border-bottom: 1px solid #858585;
     padding: 25px 0;
 }
-.swiper{
-    padding-bottom: 30px!important;
+.videoSection .contentContainer{
+    display: flex;
 }
-.videoSection .carousel .contentContainer{
-   
+.videoSection .contentContainer img{
+    width: 50%;
+    height: auto;
+}
+.videoSection .contentContainer .text{
+    margin-left: 25px;
+    width: 50%;
 }

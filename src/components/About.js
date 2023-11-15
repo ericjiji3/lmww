@@ -10,10 +10,10 @@ const About = ({ aboutData}) => {
     return(
         <>  
             <div className={`${styles.aboutSection}`}>
-                <div className="container">
+                <div>
                     {aboutData.fields.reference.map((about, i) => {
                         return(
-                                <div className={`${styles.contentContainer}`} key={i}>
+                                <div className={`container ${styles.contentContainer}`} key={i}>
                                     <ContentfulImage
                                         src={about.fields.media[0].fields.file.url}
                                         width={about.fields.media[0].fields.file.details.image.width}
@@ -22,11 +22,14 @@ const About = ({ aboutData}) => {
                                         quality='100'
                                         alt="oops"
                                         priority
-                                        style={{float: i % 2 == 0 ? 'right' : 'left', marginLeft: i % 2 == 0 ? '25px' : '0', marginRight: i % 2 == 0 ? '0' : '25px'}}
+                                        // style={{float: i % 2 == 0 ? 'right' : 'left', marginLeft: i % 2 == 0 ? '25px' : '0', marginRight: i % 2 == 0 ? '0' : '25px'}}
                                         
                                     />
-                                    <h2>{about.fields.title}</h2>
-                                    <RichText content={about.fields.description}/>
+                                    <div className={styles.text}>
+                                        <h2>{about.fields.title}</h2>
+                                        <RichText content={about.fields.description}/>
+                                    </div>
+                                    
                                 </div>
                         )
                     })}

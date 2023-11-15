@@ -5,8 +5,20 @@
 .aboutSection .header{
     text-align: center;
 }
-
 .aboutSection .contentContainer{
-    display: inline-block;
+    display: flex;
     margin: 25px 0;
+}
+.aboutSection .contentContainer:first-child{
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 25px 0;
+}
+.aboutSection .contentContainer img{
+    width: 50%;
+    height: auto;
+    margin-right: 25px;
+}
+.aboutSection .contentContainer .title{
+    width: 50%;
 }

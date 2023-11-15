@@ -1,13 +1,12 @@
 import ContentfulImage from "./ContentfulImage";
 import RichText from "./Richtext";
-import styles from '@/styles/VideoSection.module.css';
+import styles from '@/styles/VerticalSection.module.css';
 import { useRef, useEffect } from 'react';
 import { register } from 'swiper/element/bundle';
 
-
 register();
 
-const VideoSection = ({ videosData}) => {
+const VerticalSection = ({ videosData}) => {
     const swiperElRef = useRef(null);
     console.log(videosData);
 
@@ -25,14 +24,14 @@ const VideoSection = ({ videosData}) => {
 
     return(
         <>
-            <div className={`${styles.videoSection}`}>
+            <div className={`${styles.verticalSection}`}>
                 <swiper-container
                     ref={swiperElRef}
                     slides-per-view="1"
                     navigation="true"
                     pagination="true"
                     loop="true"
-                    class='swiperContainer'
+                    className={`${styles.carousel}`}
                 >
                 {videosData.fields.reference.map((videoData, i) => {
                     return(
@@ -49,11 +48,8 @@ const VideoSection = ({ videosData}) => {
                                     // style={{float: 'left', marginRight: '25px'}}
                                     
                                 />
-                                <div className={styles.text}>
-                                    <h3>{videoData.fields.title}</h3>
-                                    <RichText content={videoData.fields.description}/>
-                                </div>
-                                
+                                <h3>{videoData.fields.title}</h3>
+                                <RichText content={videoData.fields.description}/>
                             </div>
                         </swiper-slide>
                     )
@@ -64,4 +60,4 @@ const VideoSection = ({ videosData}) => {
     )
 }
 
-export default VideoSection;
+export default VerticalSection;

@@ -1,0 +1,17 @@
+.verticalSection{
+    border-bottom: 1px solid #858585;
+    padding: 25px 0;
+    height: calc(100% - 50px);
+}
+.verticalSection .contentContainer{
+    display: flex;
+    flex-direction: column;
+}
+.verticalSection .contentContainer img{
+    width: 100%;
+    height: auto;
+    margin-bottom: 25px;
+}
+.swiper{
+    padding-bottom: 30px!important;
+}

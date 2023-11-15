@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { client } from '@/lib/contentful';
 import Header from "@/components/Header";
 import Intro from '@/components/Intro';
+import VerticalSection from "@/components/VerticalSection";
 import VideoSection from "@/components/VideoSection";
 import PhotoSection from "@/components/PhotoSection";
 import AboutSection from "@/components/About";
@@ -30,23 +31,23 @@ export default function Home({ introductionPhotos, videoSection, gearSection }) 
       <main className={introFinish ? `${styles.main} ${styles.active}` : `${styles.main}`}>
             <Header/>
             <div className={`${styles.grid}`}>
-              <div className={styles.compContainer} id="musicVideos">
+              <div className={`${styles.compContainer} ${styles.musicVideos}`} id="musicVideos">
                 <h1 className={styles.compHeader}>VIDEOS</h1>
-                <VideoSection videosData={videoSection[3]}/>
+                <VideoSection videosData={videoSection[3]} id="musicVideos"/>
               </div>
-              <div className={styles.compContainer} id="photography">
+              <div className={`${styles.compContainer} ${styles.photography}`} id="photography">
                 <h1 className={styles.compHeader}>PHOTOGRAPHY</h1>
                 <PhotoSection photosData={videoSection[2]}/>
               </div>
-              <div className={styles.compContainer} id="verticalVideos">
+              <div className={`${styles.compContainer} ${styles.verticalVideos}` } id="verticalVideos">
                 <h1 className={styles.compHeader}>VERTICAL VIDEOS</h1>
-                <VideoSection videosData={videoSection[1]}/>
+                <VerticalSection videosData={videoSection[1]}/>
               </div>
-              <div className={styles.compContainer} id="about">
+              <div className={`${styles.compContainer} ${styles.about}` } id="about">
                 <h1 className={styles.compHeader}>ABOUT</h1>
                 <AboutSection aboutData={videoSection[0]}/>
               </div>
-              <div className={styles.compContainer} id="gears">
+              <div className={`${styles.compContainer} ${styles.musicVideos} ${styles.gears}`} id="gears">
                 <h1 className={styles.compHeader}>GEAR RENTALS</h1>
                 <GearSection gearsData={gearSection[0]}/>
               </div>
