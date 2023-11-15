@@ -9,9 +9,13 @@
   opacity: 0;
   animation: 1.5s fadeIn ease-in forwards;
 }
+/* .main .grid{
+  display: grid;
+} */
 .main .compContainer .compHeader{
   text-align: center;
-  padding-top: 50px;
+  margin-top: 25px;
+  letter-spacing: 5px;
 }
 @keyframes fadeIn {
   0% {

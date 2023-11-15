@@ -1,17 +1,30 @@
 .headerContainer{
-    padding-top: 50px;
+    padding-top: 25px;
 }
 .aboveNav{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 25px;
+    padding: 0 25px;
 }
-.aboveNav h1{
+.aboveNav .empower span{
+    display: block;
+    letter-spacing: 2.5px;
+}
+.aboveNav .logoContainer{
+    text-align: center;
+}
+.aboveNav .logoContainer h1{
     font-family: 'Chomsky';
+    margin: 10px 0;
+    font-size: 85px;
+}
+.aboveNav .logoContainer span{
+    letter-spacing: 10px;
 }
 .navSectionContainer{
-    border-top: 2px solid #000000;
+    border-top: 1px solid #858585;
     border-bottom: 2px solid #000000;
 }
 .navSectionContainer .navSection{
@@ -19,8 +32,10 @@
     list-style: none;
     display: flex;
     justify-content: space-between;
-    
 }
-.navSectionContainer .navSection h2{
-    font-style: italic;
+.navSectionContainer .navSection h3{
+    /* font-style: italic; */
+    font-weight: normal;
+    letter-spacing: 1px;
+    
 }

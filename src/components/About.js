@@ -22,7 +22,7 @@ const About = ({ aboutData}) => {
                                         quality='100'
                                         alt="oops"
                                         priority
-                                        style={{float: i % 2 == 0 ? 'right' : 'left'}}
+                                        style={{float: i % 2 == 0 ? 'right' : 'left', marginLeft: i % 2 == 0 ? '25px' : '0', marginRight: i % 2 == 0 ? '0' : '25px'}}
                                         
                                     />
                                     <h2>{about.fields.title}</h2>

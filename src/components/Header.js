@@ -1,14 +1,24 @@
 import styles from '@/styles/Header.module.css';
 import Image from 'next/image';
-import Logo from '../../public/images/combinedOutlineLogo.png';
+import Logo from '../../public/images/blackLogo.png';
 
 const Header = () =>{
     return(
         <>
             <header className={`${styles.headerContainer}`}>
-                <div className={`container ${styles.aboveNav}`}>
-                    <span><b>Empower the Creative~</b></span>
-                    <h1>Las Muchachos Worldwide</h1>
+                <div className={`${styles.aboveNav}`}>
+                    <div className={`${styles.empower}`}>
+                        <span><b>EMPOWER~</b></span>
+                        <span><b>THE~</b></span>
+                        <span><b>CREATIVE~</b></span>
+                    </div>
+                    
+                    <div className={`${styles.logoContainer}`}>
+                        <span>AUSTIN, TEXAS</span>
+                        <h1>Las Muchachos Worldwide</h1>
+                        <span>CURRENT TIME</span>
+                    </div>
+                    
                     <Image
                         src={Logo}
                         width={100}
@@ -18,11 +28,12 @@ const Header = () =>{
                 <div className={`${styles.navSectionContainer}`}>
                     <div className={`container`}>
                         <ul className={`${styles.navSection}`}>
-                            <li><a href="#musicVideos"><h2>MUSIC VIDEOS</h2></a></li>
-                            <li><a href="#photography"><h2>PHOTOGRAPHY</h2></a></li>
-                            <li><a href="#verticalVideos"><h2>VERTICAL VIDEOS</h2></a></li>
-                            <li><a href="#about"><h2>ABOUT US</h2></a></li>
-                            <li><a href="#gears"><h2>GEAR RENTALS</h2></a></li>
+                            <li><a href="#musicVideos"><h3>VIDEOS</h3></a></li>
+                            <li><a href="#photography"><h3>PHOTOGRAPHY</h3></a></li>
+                            <li><a href="#verticalVideos"><h3>VERTICAL VIDEOS</h3></a></li>
+                            <li><a href="#about"><h3>ABOUT US</h3></a></li>
+                            <li><a href="#gears"><h3>GEAR RENTALS</h3></a></li>
+                            <li><a href="#fabrics"><h3>FABRICS</h3></a></li>
                             </ul>
                     </div>
                 </div>
