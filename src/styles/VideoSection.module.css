@@ -1,12 +1,10 @@
 .videoSection{
-    
+    border-bottom: 2px solid #000000;
+    padding: 50px 0;
 }
 .swiper{
     padding-bottom: 30px!important;
 }
 .videoSection .carousel .contentContainer{
    
-}
-.videoSection .carousel .contentContainer .photo{
-    float: left;
 }

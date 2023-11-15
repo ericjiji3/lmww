@@ -36,7 +36,7 @@ const VideoSection = ({ videosData }) => {
                 {videosData.fields.reference.map((videoData, i) => {
                     return(
                         <swiper-slide key={i} style={{paddingBottom : 30}}>
-                            <div className={`${styles.contentContainer}`}>
+                            <div className={`container ${styles.contentContainer}`}>
                                 <ContentfulImage
                                     src={videoData.fields.media[0].fields.file.url}
                                     width={videoData.fields.media[0].fields.file.details.image.width}
@@ -45,10 +45,10 @@ const VideoSection = ({ videosData }) => {
                                     quality='100'
                                     alt="oops"
                                     priority
-                                    style={{float: 'left'}}
+                                    style={{float: 'left', marginRight: '25px'}}
                                     
                                 />
-                                <h2>{videoData.fields.title}</h2>
+                                <h3>{videoData.fields.title}</h3>
                                 <RichText content={videoData.fields.description}/>
                             </div>
                         </swiper-slide>

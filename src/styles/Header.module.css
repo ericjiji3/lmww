@@ -1,0 +1,26 @@
+.headerContainer{
+    padding-top: 50px;
+}
+.aboveNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.aboveNav h1{
+    font-family: 'Chomsky';
+}
+.navSectionContainer{
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+}
+.navSectionContainer .navSection{
+    margin: 25px 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.navSectionContainer .navSection h2{
+    font-style: italic;
+}

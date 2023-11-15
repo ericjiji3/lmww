@@ -1,0 +1,17 @@
+.gearSection{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.gearSection .contentContainer{
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 30%;
+    margin: 15px;
+}
+.gearSection .contentContainer img{
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}

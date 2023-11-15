@@ -1,9 +1,12 @@
 .aboutSection{
-    
+    padding: 50px 0;
+    border-bottom: 2px solid #000000;
 }
 .aboutSection .header{
     text-align: center;
 }
+
 .aboutSection .contentContainer{
     display: inline-block;
+    margin: 25px 0;
 }

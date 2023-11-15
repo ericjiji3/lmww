@@ -1,16 +1,17 @@
 .main{
   display: none;
-  max-width: 1170px;
-  padding-right: 45px;
-  padding-left: 45px;
-  margin-right: auto;
-  margin-left: auto;
+  background: url('../../public/images/newspaperBg.jpeg');
+  background-size: auto;
   
 }
 .main.active{
   display: block;
   opacity: 0;
   animation: 1.5s fadeIn ease-in forwards;
+}
+.main .compContainer .compHeader{
+  text-align: center;
+  padding-top: 50px;
 }
 @keyframes fadeIn {
   0% {

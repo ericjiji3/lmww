@@ -38,9 +38,9 @@ const PhotoSection = ({ photosData }) => {
                 {photosData.fields.reference.map((photoData, i) => {
                     return(
                         <swiper-slide key={i} style={{paddingBottom : 30}}>
-                            <div className={`${styles.contentContainer}`}>
+                            <div className={`container ${styles.contentContainer}`}>
                                 <div className={`${styles.titleDescription}`}>
-                                    <h2>{photoData.fields.title}</h2>
+                                    <h3>{photoData.fields.title}</h3>
                                     <RichText content={photoData.fields.description}/>
                                 </div>
                                 <swiper-container
