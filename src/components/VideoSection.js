@@ -36,7 +36,7 @@ const VideoSection = ({ videosData}) => {
                 >
                 {videosData.fields.reference.map((videoData, i) => {
                     return(
-                        <swiper-slide key={i} style={{paddingBottom : 30}}>
+                        <swiper-slide key={i} style={{paddingBottom : 30, height: 'inherit'}}>
                             <div className={`container ${styles.contentContainer}`}>
                                 <ContentfulImage
                                     src={videoData.fields.media[0].fields.file.url}

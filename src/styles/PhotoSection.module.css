@@ -10,7 +10,43 @@
 }
 .photoSection .contentContainer .titleDescription{
     margin-right: 25px;
+    width: 50%;
 }
-.photoSection .carousel .contentContainer .photo{
-    float: right;
+.photoSection .contentContainer .titleDescription h3{
+    margin-bottom: 10px;
+    font-size: 1.35em;
+}
+.photoSection .contentContainer .swipeContain{
+    width: 50%;
+}
+.photoSection .contentContainer .swipeContain img{
+    width: 100%;
+    height: auto;
+}
+.carousel::part(button-next){
+    background-color: blue;
+}
+.swipeContain swiper-container::part(button-prev){
+    opacity: 0;
+    transition: all 0.15s ease-in;
+}
+.swipeContain swiper-container::part(button-next){
+    opacity: 0;
+    transition: all 0.15s ease-in;
+}
+.swipeContain swiper-container:hover::part(button-prev){
+    opacity: 1;
+    transition: all 0.15s ease-in;
+}
+.swipeContain swiper-container:hover::part(button-next){
+    opacity: 1;
+    transition: all 0.15s ease-in;
+}
+@media(max-width: 600px){
+    .photoSection{
+        padding: 15px 0;
+    }
+    .photoSection .contentContainer .titleDescription{
+        margin-right: 10px;
+    }
 }

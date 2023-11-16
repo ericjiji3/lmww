@@ -8,7 +8,7 @@ const GearSection = ({ gearsData}) => {
 
     return(
         <>
-            <div className={`${styles.gearSection}`}>
+            <div className={`container ${styles.gearSection}`}>
                 <RichText content={gearsData.fields.gearGeneralDescription}/>
                 {gearsData.fields.gearField.map((gearData, i) => {
                     return(
@@ -24,7 +24,7 @@ const GearSection = ({ gearsData}) => {
                                     style={{float: 'left'}}
                                     
                                 />
-                                <h2>{gearData.fields.gearName}</h2>
+                                <h3>{gearData.fields.gearName}</h3>
                                 <span><b>Price: {gearData.fields.price}</b></span>
                                 <RichText content={gearData.fields.description}/>
                             </div>

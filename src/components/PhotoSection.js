@@ -43,14 +43,15 @@ const PhotoSection = ({ photosData }) => {
                                     <h3>{photoData.fields.title}</h3>
                                     <RichText content={photoData.fields.description}/>
                                 </div>
+                                <div className={styles.swipeContain}>
                                 <swiper-container
                                     ref={swiperElRef2}
                                     slides-per-view="1"
                                     navigation="true"
-                                    pagination="true"
+                                    pagination="false"
                                     loop="true"
                                     className={`${styles.carousel}`}
-                                    style={{width : 500}}
+                                    
                                 >
                                 {
                                     photoData.fields.media.map((photo, i) => {
@@ -69,6 +70,8 @@ const PhotoSection = ({ photosData }) => {
                                         )
                                 }) }
                                 </swiper-container>
+                                </div>
+                                
                                 
                             </div>
                         </swiper-slide>

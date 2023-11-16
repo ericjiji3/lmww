@@ -7,6 +7,8 @@ import VideoSection from "@/components/VideoSection";
 import PhotoSection from "@/components/PhotoSection";
 import AboutSection from "@/components/About";
 import GearSection from "@/components/GearSection";
+import FabricSection from '@/components/FabricSection';
+import Contact from '@/components/Contact';
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { useState } from 'react';
@@ -16,7 +18,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({ introductionPhotos, videoSection, gearSection }) {
   const [introFinish, setIntroFinish] = useState(false);
-  console.log(VideoSection);
+  console.log({videoSection});
 
   return (
     <>
@@ -30,27 +32,41 @@ export default function Home({ introductionPhotos, videoSection, gearSection }) 
       <Intro introPhotos={introductionPhotos} setIntroFinish={setIntroFinish}/>
       <main className={introFinish ? `${styles.main} ${styles.active}` : `${styles.main}`}>
             <Header/>
-            <div className={`${styles.grid}`}>
-              <div className={`${styles.compContainer} ${styles.musicVideos}`} id="musicVideos">
-                <h1 className={styles.compHeader}>VIDEOS</h1>
-                <VideoSection videosData={videoSection[3]} id="musicVideos"/>
+            <div className={`genContainer ${styles.grid}`}>
+              <div className={styles.column1}>
+                <div className={`${styles.compContainer} ${styles.musicVideos}`} id="musicVideos">
+                  <h1 className={styles.compHeader}>VIDEOS</h1>
+                  <VideoSection videosData={videoSection[4]} id="musicVideos"/>
+                </div>
+                <div className={`${styles.compContainer} ${styles.photography}`} id="photography">
+                  <h1 className={styles.compHeader}>PHOTOGRAPHY</h1>
+                  <PhotoSection photosData={videoSection[3]}/>
+                </div>
+                <div className={`${styles.compContainer} ${styles.musicVideos} ${styles.gears}`} id="gears">
+                  <h1 className={styles.compHeader}>GEAR RENTALS</h1>
+                  <GearSection gearsData={gearSection[0]}/>
+                </div>
+                <div className={`${styles.compContainer} ${styles.contact}`} id="contact">
+                  <h1 className={styles.compHeader}>CONTACT</h1>
+                  <Contact/>
+                </div>
               </div>
-              <div className={`${styles.compContainer} ${styles.photography}`} id="photography">
-                <h1 className={styles.compHeader}>PHOTOGRAPHY</h1>
-                <PhotoSection photosData={videoSection[2]}/>
+              <div className={styles.column2}>
+                <div className={`${styles.compContainer} ${styles.verticalVideos}` } id="verticalVideos">
+                  <h1 className={styles.compHeader}>VERTICAL VIDEOS</h1>
+                  <VerticalSection videosData={videoSection[2]}/>
+                </div>
+                <div className={`${styles.compContainer} ${styles.about}` } id="about">
+                  <h1 className={styles.compHeader}>ABOUT</h1>
+                  <AboutSection aboutData={videoSection[1]}/>
+                </div>
+                <div className={`${styles.compContainer} ${styles.about}` } id="about">
+                  <h1 className={styles.compHeader}>FABRICS</h1>
+                  <FabricSection photosData={videoSection[0]}/>
+                </div>
               </div>
-              <div className={`${styles.compContainer} ${styles.verticalVideos}` } id="verticalVideos">
-                <h1 className={styles.compHeader}>VERTICAL VIDEOS</h1>
-                <VerticalSection videosData={videoSection[1]}/>
-              </div>
-              <div className={`${styles.compContainer} ${styles.about}` } id="about">
-                <h1 className={styles.compHeader}>ABOUT</h1>
-                <AboutSection aboutData={videoSection[0]}/>
-              </div>
-              <div className={`${styles.compContainer} ${styles.musicVideos} ${styles.gears}`} id="gears">
-                <h1 className={styles.compHeader}>GEAR RENTALS</h1>
-                <GearSection gearsData={gearSection[0]}/>
-              </div>
+              
+              
             </div>
             
             

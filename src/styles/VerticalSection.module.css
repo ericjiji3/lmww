@@ -1,7 +1,8 @@
 .verticalSection{
-    border-bottom: 1px solid #858585;
+    
     padding: 25px 0;
     height: calc(100% - 50px);
+    border-bottom: 1px solid #858585;
 }
 .verticalSection .contentContainer{
     display: flex;
@@ -12,6 +13,15 @@
     height: auto;
     margin-bottom: 25px;
 }
-.swiper{
-    padding-bottom: 30px!important;
+.verticalSection .contentContainer h3{
+    margin-bottom: 10px;
+    font-size: 1.35em;
+}
+@media(max-width: 600px){
+    .verticalSection{
+        padding: 15px 0;
+    }
+    .verticalSection .contentContainer img{
+        margin-bottom: 10px;
+    }
 }

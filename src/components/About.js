@@ -26,7 +26,7 @@ const About = ({ aboutData}) => {
                                         
                                     />
                                     <div className={styles.text}>
-                                        <h2>{about.fields.title}</h2>
+                                        <h3>{about.fields.title}</h3>
                                         <RichText content={about.fields.description}/>
                                     </div>
                                     

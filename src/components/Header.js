@@ -18,7 +18,7 @@ const Header = () =>{
 
     return(
         <>
-            <header className={`${styles.headerContainer}`}>
+            <header className={`genContainer ${styles.headerContainer}`}>
                 <div className={`${styles.aboveNav}`}>
                     <div className={`${styles.empower}`}>
                         <span><b>EMPOWER~</b></span>

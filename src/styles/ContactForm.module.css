@@ -1,10 +1,25 @@
+.contactContainer{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
 .contactContainer .contactForm{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     margin: auto;
     margin-bottom: 50px;
     font-weight: bold;
+}
+.contactContainer .contactForm .inputContainer{
+    margin-bottom: 15px;
+    display: flex;
+}
+.contactContainer .contactForm .inputContainer label{
+    width: 10%;
+}
+.contactContainer .contactForm .inputContainer input, .inputContainer select, .inputContainer textarea{
+    width: 90%;
+
 }
 .contactContainer .contactForm .submitButt{
     margin-top: 10px;
@@ -12,6 +27,8 @@
     font-weight: bold;
     font-family: 'Terminal Medium';
     padding: 10px 0;
+    width: 90%;
+    margin-left: 10%;
 }
 @media(max-width: 700px){
     .contactContainer .contactForm{

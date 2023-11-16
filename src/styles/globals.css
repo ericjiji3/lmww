@@ -88,6 +88,77 @@ h1, h2, h3, h4, h5, h6{
   font-style: normal;
   font-weight: bold; 
 }
+
+p{
+  font-size: 1.17em;
+}
+@media(max-width: 1200px){
+  h1{
+    font-size: 1.5em;
+  }
+  h2{
+    font-size: 1.25em;
+  }
+  h3{
+    font-size: 1em!important;
+  }
+  h4{
+    font-size: .75em;
+  }
+  h5{
+    font-size: .5em;
+  }
+  h6{
+    font-size: .25em;
+  }
+  p, span{
+    font-size: 1em;
+  }
+}
+@media(max-width: 1000px){
+  h1{
+    font-size: 1em;
+  }
+  h2{
+    font-size: .75em;
+  }
+  h3{
+    font-size: .75em!important;
+  }
+  h4{
+    font-size: .75em;
+  }
+  h5{
+    font-size: .5em;
+  }
+  h6{
+    font-size: .25em;
+  }
+  p, span{
+    font-size: .75em;
+  }
+}
+@media(max-width: 600px){
+
+  h3{
+    font-size: .6em!important;
+  }
+  p, span{
+    font-size: .55em;
+  }
+  
+}
+@media(max-width: 500px){
+  h1{
+    font-size: .6em;
+  }
+  h3{
+    font-size: .55em!important;
+  }
+  p, span{
+    font-size: .5em;
+  }
+}
 * {
   box-sizing: border-box;
   padding: 0;
@@ -119,17 +190,18 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
+.genContainer{
+  padding-right: 150px;
+  padding-left: 150px;
+  margin-right: auto;
+  margin-left: auto;
+}
 .container{
   max-width: 1170px;
   padding-right: 45px;
   padding-left: 45px;
   margin-right: auto;
   margin-left: auto;
-}
-
-#musicVideos .videoSection{
-  display: flex;
 }
 swiper-container::part(button-next){
   color: #000000;
@@ -140,3 +212,53 @@ swiper-container::part(button-prev){
 swiper-container::part(bullet-active) {
   background-color: #000000;
 }
+@media(max-width: 1200px){
+  .genContainer{
+    padding-right: 50px;
+    padding-left: 50px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+@media(max-width: 1000px){
+  .genContainer{
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+@media(max-width: 600px){
+  .genContainer{
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .container{
+    max-width: 1170px;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  swiper-container::part(button-next){
+    width: 7.5px;
+  }
+  swiper-container::part(button-prev){
+    width: 7.5px;
+  }
+  swiper-container::part(bullet-active) {
+    width: 4px;
+    height: 4px;
+  }
+  swiper-container::part(bullet) {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+#musicVideos .videoSection{
+  display: flex;
+}
+
