@@ -27,7 +27,7 @@ const FabricSection = ({ photosData }) => {
             <div className={`${styles.fabricSection}`}>
                 {photosData.fields.reference.map((photoData, i) => {
                     return(
-                            <div className={`${styles.contentContainer}`}>
+                            <div className={`${styles.contentContainer}`} key={i}>
                                 <swiper-container
                                     ref={swiperElRef}
                                     slides-per-view="1"
