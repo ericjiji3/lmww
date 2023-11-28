@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     padding-top: 25px;
     padding-bottom: 25px;
-    justify-content: center;
+    justify-content: space-between;
 }
 .gearSection p{
     margin-bottom: 10px;
@@ -14,6 +14,7 @@
     flex: 0 1 22%;
     margin: 15px;
 }
+
 .gearSection .contentContainer img{
     width: 100%;
     height: auto;

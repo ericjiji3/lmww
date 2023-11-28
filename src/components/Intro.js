@@ -2,6 +2,8 @@ import styles from '@/styles/Intro.module.css';
 import { client } from '@/lib/contentful';
 import ContentfulImage from '@/components/ContentfulImage';
 import React,{useState, useEffect, useRef} from 'react';
+import Image from 'next/image';
+import scrollDown from '../../public/images/scroll-down.gif';
 
 
 const Intro = ({ introPhotos, setIntroFinish }) => {
@@ -14,6 +16,7 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
     const [step, setStep ] = useState(0);
     const [activePhoto, setActivePhoto ] = useState(0);
     const [hideIntro, setHideIntro] = useState(false);
+    const [hideScroll, setHideScroll] = useState(false);
     
     
     useEffect(()=>{
@@ -22,6 +25,7 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
         //this is window width / 2 / 12(# of increments)
         console.log('active photo: ' , activePhoto);
         console.log('step: ', step)
+
         if(activePhoto < introPhotos[0].fields.images.length - 3){
             if(scrollPos % 8 == 0){
                 console.log('scroll position hit: ' , scrollPos);
@@ -52,6 +56,11 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                 realDelta = e.deltaY;
             }
             setScrollPos(Math.round(scrollPos + realDelta/100));
+
+            if(scrollPos == 1){
+                setHideScroll(true);
+            }
+
             if(activePhoto < introPhotos[0].fields.images.length - 3){
                 if(activePhoto % 2 == 0){
                     setStep(scrollPos % 8);
@@ -78,7 +87,11 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
     return(
         <>
             <div className={hideIntro ? `${styles.introContainer} ${styles.inactive}`: `${styles.introContainer}`}>
-                
+                <div className={hideScroll ? `${styles.scrollTextContainer} ${styles.inactive}` : `${styles.scrollTextContainer}`}>
+                    <div className={`${styles.scrollContainer}`}>
+                    <div className={`${styles.scroller}`}></div>
+                    </div>
+                </div>
                 <div className={styles.photosContainer}>
                 
                 {introPhotos[0].fields.images && introPhotos[0].fields.images.map((photo, i) => {

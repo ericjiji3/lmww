@@ -20,6 +20,14 @@
   width: 25%;
   border-left: 1px solid #858585;
 }
+@media(max-width: 1800px){
+  .main .grid .column1{
+    width: 70%;
+  }
+  .main .grid .column2{
+    width: 30%;
+  }
+}
 /* .main .grid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;

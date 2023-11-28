@@ -60,7 +60,7 @@ export default function Home({ introductionPhotos, videoSection, gearSection }) 
                   <h1 className={styles.compHeader}>ABOUT</h1>
                   <AboutSection aboutData={videoSection[1]}/>
                 </div>
-                <div className={`${styles.compContainer} ${styles.about}` } id="about">
+                <div className={`${styles.compContainer} ${styles.about}` } id="fabrics">
                   <h1 className={styles.compHeader}>FABRICS</h1>
                   <FabricSection photosData={videoSection[0]}/>
                 </div>

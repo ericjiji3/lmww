@@ -205,12 +205,29 @@ a {
 }
 swiper-container::part(button-next){
   color: #000000;
+  width: 15px;
 }
 swiper-container::part(button-prev){
   color: #000000;
+  width: 15px;
 }
 swiper-container::part(bullet-active) {
   background-color: #000000;
+  width: 5px;
+  height: 5px;
+}
+swiper-container::part(bullet) {
+
+  width: 5px;
+  height: 5px;
+}
+@media(max-width: 2000px){
+  .genContainer{
+    padding-right: 75px;
+    padding-left: 75px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 @media(max-width: 1200px){
   .genContainer{

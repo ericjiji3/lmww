@@ -3,10 +3,13 @@ import {useRef, useState} from 'react';
 
 const Contact = () => {
     const form = useRef();
+    
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [type, setType] = useState('quote');
+    const [message, setMessage] = useState('');
+    const [success, setSuccess] = useState(false);
 
     const handleNameChange = (e) => {
         setName(e.target.value)
@@ -20,17 +23,24 @@ const Contact = () => {
     const handleTypeChange = (e) => {
         setType(e.target.value)
     }
+    const handleMessageChange = (e) => {
+        setMessage(e.target.value)
+        console.log(message);
+    }
+
 
     const sendEmail = (e) => {
         e.preventDefault();
-        console.log(type);
-        if(name && email && phone){
+        console.log('MESSAGE: ', message);
+        if(name && email){
             emailjs.sendForm('service_gbncwul', 'template_d0ji11s', form.current, 'kUG0i2yQgGLjnWBYr')
         
             .then((result) => {
                 alert("Successfully sent!");
+                setSuccess(true);
                 e.target.reset();
             }, (error) => {
+                setSuccess(false);
                 alert("Uh oh, something went wrong:( Try again!");
                 e.target.reset();
             });
@@ -44,11 +54,11 @@ const Contact = () => {
             <form className={styles.contactForm} ref={form} onSubmit={sendEmail}>
                 <div className={styles.inputContainer}>
                     <label>Name*:</label>
-                    <input className={styles.nameInput} type="text" name="user_name" onChange={handleNameChange} value={name} />
+                    <input className={styles.nameInput} type="text" name="user_name" onChange={handleNameChange} value={name} required/>
                 </div>
                 <div className={styles.inputContainer}>
                     <label>Email*:</label>
-                    <input className={styles.emailInput} type="email" name="user_email" onChange={handleEmailChange} value={email} />
+                    <input className={styles.emailInput} type="email" name="user_email" onChange={handleEmailChange} placeholder="email@email.com" value={email} required/>
                 </div>
                 <div className={styles.inputContainer}>
                     <label>Phone:</label>
@@ -64,10 +74,10 @@ const Contact = () => {
                 </div>
                 <div className={styles.inputContainer}>
                     <label>Message:</label>
-                    <textarea name="message" rows={10} cols={40}/>
+                    <textarea name="message" rows={10} cols={40} onChange={handleMessageChange} value={message}/>
                 </div>
                 <button type='submit' className={styles.submitButt}>
-                    <h3>SEND</h3>
+                    <h3 >SEND</h3>
                 </button>
             </form>
         </div>
