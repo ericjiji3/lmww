@@ -1,5 +1,6 @@
 import styles from '@/styles/Intro.module.css';
 import { client } from '@/lib/contentful';
+import { useSwipeable } from 'react-swipeable';
 import ContentfulImage from '@/components/ContentfulImage';
 import React,{useState, useEffect, useRef} from 'react';
 import Image from 'next/image';
@@ -45,17 +46,37 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                 
             }
         }
-    
-        const handleScroll = (e) =>{
-            var realDelta = e.deltaY;
-            if(Math.abs(e.deltaY) == 1){
-                realDelta = e.deltaY * 100;
-            }else if(Math.abs(e.deltaY) == 0 || e.deltaY == -0){
-                realDelta = 100;
-            }else{
-                realDelta = e.deltaY;
+        
+        const throttle = (fn, wait) => {
+            var time = Date.now();
+
+            return function(event) {
+              // we dismiss every wheel event with deltaY less than 4
+              if (Math.abs(event.deltaY) < 4) return
+        
+              if ((time + wait - Date.now()) < 0) {
+                fn(event);
+                time = Date.now();
+              }
             }
-            setScrollPos(Math.round(scrollPos + realDelta/100));
+        }
+
+        const handleScroll = (e) =>{
+            e.preventDefault();
+            var realDelta = e.wheelDelta;
+            // var realDelta = e.deltaY;
+            // if(Math.abs(e.deltaY) == 1){
+            //     realDelta = e.deltaY * 100;
+            // }else if(Math.abs(e.deltaY) == 0 || e.deltaY == -0){
+            //     realDelta = 100;
+            // }else{
+            //     realDelta = e.deltaY;
+            // }
+            console.log('wheel delta: ', e.detail);
+            if(e.detail > 0 || realDelta < 0){
+                setScrollPos(scrollPos + 1);
+            }
+            // setScrollPos(Math.round(scrollPos + realDelta/100));
 
             if(scrollPos == 1){
                 setHideScroll(true);
@@ -79,14 +100,86 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
             
         
         };
-        window.addEventListener('wheel', handleScroll);
+        window.addEventListener('mousewheel', throttle(handleScroll, 100));
+        
         return()=>{
-            window.removeEventListener('wheel', handleScroll);
+            window.removeEventListener('mousewheel', throttle(handleScroll, 100));
         }
     }, [scrollPos, activePhoto, step, hideIntro])
+    const handlers = useSwipeable({
+        onSwipedDown: (eventData) => {
+            console.log(eventData);
+            if(eventData.deltaY > 0){
+                setScrollPos(scrollPos + 1);
+            }
+            if(scrollPos == 1){
+                setHideScroll(true);
+            }
+            if(activePhoto < introPhotos[0].fields.images.length - 3){
+                if(scrollPos % 8 == 0){
+                    console.log('scroll position hit: ' , scrollPos);
+                    setActivePhoto(scrollPos/8);
+                    setStep(0);
+                }
+                if(activePhoto % 2 == 0){
+                    setStep(scrollPos % 8);
+                }else{
+                    setStep(-(scrollPos % 8));
+                    console.log('odd photo: ', step);
+                }
+            }else{
+                    console.log(introPhotos[0].fields.images.length);
+                    if(activePhoto == introPhotos[0].fields.images.length - 1 && step == 70){
+                        console.log('ENDINGINGINGD');
+                        setHideIntro(true);
+                        setIntroFinish(true);
+                    }else{
+                        if(scrollPos % 8 == 0){
+                            setActivePhoto(scrollPos/8);
+                            setStep(10);
+                        }else{
+                            console.log('LAST 3 IMAGES');
+                            // setActivePhoto(scrollPos/8);
+                            setStep(((step / 10) + 1) * 10);
+                        }
+                    // }else{
+                    //     if(step == 10){
+                    //         setStep(20);
+                    //     }else{
+                    //         console.log("huh");
+                    //         setStep(((scrollPos % 8) + 2) * 10);
+                    //     }
+                        
+                        
+                    }
+                    
+                
+            }
+            
+            // if(activePhoto < introPhotos[0].fields.images.length - 3){
+            //     if(activePhoto % 2 == 0){
+            //         setStep(scrollPos % 8);
+            //     }else{
+            //         setStep(-(scrollPos % 8));
+            //         console.log('odd photo: ', step);
+            //     }
+            // }else{
+            //         if(step == 10){
+            //             setStep(20);
+            //         }else{
+            //             console.log("huh");
+            //             setStep(((scrollPos % 8) + 2) * 10);
+            //         }
+            // }
+            
+        },
+        swipeDuration: 500,
+        preventScrollOnSwipe: true
+      });
+   
     return(
         <>
-            <div className={hideIntro ? `${styles.introContainer} ${styles.inactive}`: `${styles.introContainer}`}>
+            <div {...handlers} className={hideIntro ? `${styles.introContainer} ${styles.inactive}`: `${styles.introContainer}`}>
                 <div className={hideScroll ? `${styles.scrollTextContainer} ${styles.inactive}` : `${styles.scrollTextContainer}`}>
                     <div className={`${styles.scrollContainer}`}>
                     <div className={`${styles.scroller}`}></div>

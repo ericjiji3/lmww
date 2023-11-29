@@ -196,7 +196,7 @@
     background-color: #fff;
     position: absolute;
     top: 4px;
-    left: 4px;
+    left: 5px;
     bottom: 34px;
     animation: scroller 1500ms ease-out infinite;
   }
