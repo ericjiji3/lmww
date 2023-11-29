@@ -38,17 +38,34 @@ const VideoSection = ({ videosData}) => {
                     return(
                         <swiper-slide key={i} style={{paddingBottom : 30, height: 'inherit'}}>
                             <div className={`container ${styles.contentContainer}`}>
-                                <ContentfulImage
-                                    src={videoData.fields.media[0].fields.file.url}
-                                    width={videoData.fields.media[0].fields.file.details.image.width}
-                                    height={videoData.fields.media[0].fields.file.details.image.height}
-                                    className={`${styles.photo}`}
-                                    quality='100'
-                                    alt="oops"
-                                    priority
-                                    // style={{float: 'left', marginRight: '25px'}}
-                                    
-                                />
+                                { videoData.fields.link ? (
+                                    <a href={videoData.fields.link} className={`${styles.linkContainer}`}>
+                                        <ContentfulImage
+                                        src={videoData.fields.media[0].fields.file.url}
+                                        width={videoData.fields.media[0].fields.file.details.image.width}
+                                        height={videoData.fields.media[0].fields.file.details.image.height}
+                                        className={`${styles.photo}`}
+                                        quality='100'
+                                        alt="oops"
+                                        priority
+                                        // style={{float: 'left', marginRight: '25px'}}
+                                        
+                                        />
+                                    </a>
+                                ) : (
+                                    <ContentfulImage
+                                        src={videoData.fields.media[0].fields.file.url}
+                                        width={videoData.fields.media[0].fields.file.details.image.width}
+                                        height={videoData.fields.media[0].fields.file.details.image.height}
+                                        className={`${styles.photo}`}
+                                        quality='100'
+                                        alt="oops"
+                                        priority
+                                        // style={{float: 'left', marginRight: '25px'}}
+                                        
+                                    />
+                                ) }
+                                
                                 <div className={styles.text}>
                                     <h3>{videoData.fields.title}</h3>
                                     <RichText content={videoData.fields.description}/>

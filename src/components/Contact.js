@@ -1,5 +1,6 @@
 import styles from '@/styles/ContactForm.module.css'
 import {useRef, useState} from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
     const form = useRef();
@@ -33,19 +34,15 @@ const Contact = () => {
         e.preventDefault();
         console.log('MESSAGE: ', message);
         if(name && email){
-            emailjs.sendForm('service_gbncwul', 'template_d0ji11s', form.current, 'kUG0i2yQgGLjnWBYr')
+            emailjs.sendForm('service_gbncwul', 'template_sif6j3g', form.current, 'kUG0i2yQgGLjnWBYr')
         
             .then((result) => {
-                alert("Successfully sent!");
                 setSuccess(true);
                 e.target.reset();
             }, (error) => {
                 setSuccess(false);
-                alert("Uh oh, something went wrong:( Try again!");
                 e.target.reset();
             });
-        } else{
-            alert("Make sure to fill out akll the fields!");
         }
     };
 
@@ -54,11 +51,11 @@ const Contact = () => {
             <form className={styles.contactForm} ref={form} onSubmit={sendEmail}>
                 <div className={styles.inputContainer}>
                     <label>Name*:</label>
-                    <input className={styles.nameInput} type="text" name="user_name" onChange={handleNameChange} value={name} required/>
+                    <input className={styles.nameInput} type="text" name="name" onChange={handleNameChange} value={name} required/>
                 </div>
                 <div className={styles.inputContainer}>
                     <label>Email*:</label>
-                    <input className={styles.emailInput} type="email" name="user_email" onChange={handleEmailChange} placeholder="email@email.com" value={email} required/>
+                    <input className={styles.emailInput} type="email" name="email" onChange={handleEmailChange} placeholder="email@email.com" value={email} required/>
                 </div>
                 <div className={styles.inputContainer}>
                     <label>Phone:</label>
@@ -77,7 +74,7 @@ const Contact = () => {
                     <textarea name="message" rows={10} cols={40} onChange={handleMessageChange} value={message}/>
                 </div>
                 <button type='submit' className={styles.submitButt}>
-                    <h3 >SEND</h3>
+                    <h3 className={success ? `${styles.sendText} ${styles.inactive}` : `${styles.sendText}`}>{success ? 'SUCCESS' : 'SEND'}</h3>
                 </button>
             </form>
         </div>
