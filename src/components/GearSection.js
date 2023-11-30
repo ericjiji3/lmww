@@ -25,7 +25,32 @@ const GearSection = ({ gearsData}) => {
                                     
                                 />
                                 <h3>{gearData.fields.gearName}</h3>
-                                <span><b>Price: {gearData.fields.price}</b></span>
+                                {(()=>{
+                                    console.log(gearData.fields.price.substring(1, gearData.fields.price.indexOf("/")));
+                                    if(gearData.fields.price.substring(1, gearData.fields.price.indexOf("/")) == '5'){
+                                        return(
+                                            <div className={styles.fiveDollar}></div>
+                                        )
+                                    }else if(gearData.fields.price.substring(1, gearData.fields.price.indexOf("/")) == '10'){
+                                        return(
+                                            <div className={styles.tenDollar}></div>
+                                        )
+                                    }else if(gearData.fields.price.substring(1, gearData.fields.price.indexOf("/")) == '15'){
+                                        return(
+                                            <div className={styles.fifteenDollar}></div>
+                                        )
+                                    }else if(gearData.fields.price.substring(1, gearData.fields.price.indexOf("/")) == '20'){
+                                        return(
+                                            <div className={styles.twentyDollar}></div>
+                                        )
+                                    }else if(gearData.fields.price.substring(1, gearData.fields.price.indexOf("/")) == '30'){
+                                        return(
+                                            <div className={styles.thirtyDollar}></div>
+                                        )
+                                    }
+                                })()
+                                }
+                                
                                 <RichText content={gearData.fields.description}/>
                             </div>
                     )

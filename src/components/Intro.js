@@ -6,7 +6,8 @@ import React,{useState, useEffect, useRef} from 'react';
 import Image from 'next/image';
 import scrollDown from '../../public/images/scroll-down.gif';
 
-
+const INITIAL_TIMER = 30;
+const TARGET_TIMER = 0;
 const Intro = ({ introPhotos, setIntroFinish }) => {
     
     // const {photos} = introPhotos;
@@ -18,6 +19,9 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
     const [activePhoto, setActivePhoto ] = useState(0);
     const [hideIntro, setHideIntro] = useState(false);
     const [hideScroll, setHideScroll] = useState(false);
+    const [timer, setTimer] = useState(INITIAL_TIMER);
+    const interval = useRef();
+  
     
     
     useEffect(()=>{
@@ -61,32 +65,14 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
             }
         }
 
-        const handleMobileScroll = (e) => {
-            setInterval(function(){
-                setScrollPos(scrollPos + 1);
-                if(scrollPos == 1){
-                    setHideScroll(true);
+        const loop = (fn, wait) => {
+            setInterval(()=>{
+                return function(event){
+                    fn(event);
                 }
-    
-                if(activePhoto < introPhotos[0].fields.images.length - 3){
-                    if(activePhoto % 2 == 0){
-                        setStep(scrollPos % 8);
-                    }else{
-                        setStep(-(scrollPos % 8));
-                        console.log('odd photo: ', step);
-                    }
-                }else{
-                        if(step == 10){
-                            setStep(20);
-                        }else{
-                            console.log("huh");
-                            setStep(((scrollPos % 8) + 2) * 10);
-                        }
-                }
-                
-
-            }, 1000)
+        }, wait)
         }
+        
 
         const handleScroll = (e) =>{
             e.preventDefault();
@@ -128,11 +114,44 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
         
         };
         window.addEventListener('mousewheel', throttle(handleScroll, 100));
-        window.addEventListener('mousedown', handleMobileScroll);
         return()=>{
             window.removeEventListener('mousewheel', throttle(handleScroll, 100));
+            
         }
-    }, [scrollPos, activePhoto, step, hideIntro])
+    }, [scrollPos, activePhoto, step, hideIntro, timer])
+
+    useEffect(() => {
+        const handleMobileScroll = () => {
+            setInterval(()=>{
+                    setScrollPos(scrollPos+ 1);
+                    if(scrollPos == 1){
+                        setHideScroll(true);
+                    }
+        
+                    if(activePhoto < introPhotos[0].fields.images.length - 3){
+                        if(activePhoto % 2 == 0){
+                            console.log('hit: ', scrollPos);
+                            setStep(scrollPos % 8);
+                        }else{
+                            setStep(-(scrollPos % 8));
+                            console.log('odd photo: ', step);
+                        }
+                    }else{
+                            if(step == 10){
+                                setStep(20);
+                            }else{
+                                console.log("huh");
+                                setStep(((scrollPos % 8) + 2) * 10);
+                            }
+                    }
+    
+            }, 500)}
+        window.addEventListener('click', handleMobileScroll);
+        return () => {
+            clearInterval(interval);
+            window.removeEventListener('click', handleMobileScroll);
+          };
+    }, [])
     const handlers = useSwipeable({
         // onSwiping: (eventData) => {
         //     console.log(eventData);
@@ -173,44 +192,44 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
         //             }            
         //     }
         // },
-        onTouchStartOrOnMouseDown: ({event}) => {
-            setInterval(function(){
-                setScrollPos(scrollPos + 1);
-                if(scrollPos == 1){
-                    setHideScroll(true);
-                }
-                if(activePhoto < introPhotos[0].fields.images.length - 3){
-                    if(scrollPos % 8 == 0){
-                        console.log('scroll position hit: ' , scrollPos);
-                        setActivePhoto(scrollPos/8);
-                        setStep(0);
-                    }
-                    if(activePhoto % 2 == 0){
-                        setStep(scrollPos % 8);
-                    }else{
-                        setStep(-(scrollPos % 8));
-                        console.log('odd photo: ', step);
-                    }
-                }else{
-                        console.log(introPhotos[0].fields.images.length);
-                        if(activePhoto == introPhotos[0].fields.images.length - 1 && step == 70){
-                            console.log('ENDINGINGINGD');
-                            setHideIntro(true);
-                            setIntroFinish(true);
-                        }else{
-                            if(scrollPos % 8 == 0){
-                                setActivePhoto(scrollPos/8);
-                                setStep(10);
-                            }else{
-                                console.log('LAST 3 IMAGES');
-                                // setActivePhoto(scrollPos/8);
-                                setStep(((step / 10) + 1) * 10);
-                            }
+        // onTouchStartOrOnMouseDown: ({event}) => {
+        //     setInterval(function(){
+        //         setScrollPos(scrollPos + 1);
+        //         if(scrollPos == 1){
+        //             setHideScroll(true);
+        //         }
+        //         if(activePhoto < introPhotos[0].fields.images.length - 3){
+        //             if(scrollPos % 8 == 0){
+        //                 console.log('scroll position hit: ' , scrollPos);
+        //                 setActivePhoto(scrollPos/8);
+        //                 setStep(0);
+        //             }
+        //             if(activePhoto % 2 == 0){
+        //                 setStep(scrollPos % 8);
+        //             }else{
+        //                 setStep(-(scrollPos % 8));
+        //                 console.log('odd photo: ', step);
+        //             }
+        //         }else{
+        //                 console.log(introPhotos[0].fields.images.length);
+        //                 if(activePhoto == introPhotos[0].fields.images.length - 1 && step == 70){
+        //                     console.log('ENDINGINGINGD');
+        //                     setHideIntro(true);
+        //                     setIntroFinish(true);
+        //                 }else{
+        //                     if(scrollPos % 8 == 0){
+        //                         setActivePhoto(scrollPos/8);
+        //                         setStep(10);
+        //                     }else{
+        //                         console.log('LAST 3 IMAGES');
+        //                         // setActivePhoto(scrollPos/8);
+        //                         setStep(((step / 10) + 1) * 10);
+        //                     }
                             
-                        }            
-                }
-            }, 500)
-        },
+        //                 }            
+        //         }
+        //     }, 500)
+        // },
         // onSwipedUp: (eventData) => {
         //     console.log(eventData);
         //     if(eventData.deltaY < 0){

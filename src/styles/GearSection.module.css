@@ -13,15 +13,52 @@
     flex-direction: column;
     flex: 0 1 22%;
     margin: 15px;
+    position: relative;
+    text-align: center;
 }
 
 .gearSection .contentContainer img{
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 150px;
+    object-fit: contain;
     margin-bottom: 10px;
 }
 .gearSection .contentContainer h3{
     font-size: 1.35em;
+}
+.gearSection .contentContainer div{
+    position: absolute;
+    top: 5%;
+}
+.gearSection .contentContainer .fiveDollar{
+    background-image: url('../../public/images/five.png');
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+}
+.gearSection .contentContainer .tenDollar{
+    background-image: url('../../public/images/ten.png');
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+}
+.gearSection .contentContainer .fifteenDollar{
+    background-image: url('../../public/images/fifteen.png');
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+}
+.gearSection .contentContainer .twentyfiveDollar{
+    background-image: url('../../public/images/twentyfive.png');
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+}
+.gearSection .contentContainer .thirtyDollar{
+    background-image: url('../../public/images/thirty.png');
+    width: 100px;
+    height: 100px;
+    background-size: cover;
 }
 @media(max-width: 600px){
     .gearSection{
