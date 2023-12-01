@@ -29,7 +29,7 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
         //this is window width / 2 / 12(# of increments)
         console.log('active photo: ' , activePhoto);
         console.log('step: ', step)
-
+        
         if(activePhoto < introPhotos[0].fields.images.length - 3){
             if(scrollPos % 8 == 0){
                 // console.log('scroll position hit: ' , scrollPos);
@@ -129,57 +129,57 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
             
         
         };
+        const handleMobileScroll = ()=>{
+
+            setInterval(()=>{
+                    
+                        setScrollPos(oldScrollPos => oldScrollPos+ 1);
+                        setStep(oldStep => oldStep + 1);
+                    
+
+    
+            }, 100)}
+        
         if(window.innerWidth > 750){
             window.addEventListener('mousewheel', throttle(handleScroll, 100));
+        }else{
+            window.addEventListener('click', handleMobileScroll);
         }
-        
+        if(scrollPos == 58){
+            return()=>{
+                clearInterval(handleMobileScroll);
+            }
+            
+        }
         return()=>{
             window.removeEventListener('mousewheel', throttle(handleScroll, 100));
-            
+            window.removeEventListener('click', handleMobileScroll);
+
         }
     }, [scrollPos, activePhoto, step, hideIntro, timer])
 
-    useEffect(() => {
-        const handleMobileScroll = (e) => {
-            e.preventDefault();
+    // useEffect(() => {
 
-            setInterval(()=>{
-                
-                    setScrollPos(oldScrollPos => oldScrollPos+ 1);
-                    setStep(oldStep => oldStep + 1);
-                    // if(scrollPos == 1){
-                    //     setHideScroll(oldHideScroll => !oldHideScroll);
-                    // }
-        
-                    // if(activePhoto < introPhotos[0].fields.images.length - 3){
-                    //     if(activePhoto % 2 == 0){
-                    //             setStep(oldStep => oldStep + 1);
+    //     const handleMobileScroll = (e) => {
+    //         e.preventDefault();
 
-                    //     }else{
-                    //             setStep(oldStep => oldStep - 1);
-                    //             console.log('odd photo: ', step);
+    //         setInterval(()=>{
+                    
+    //                     setScrollPos(oldScrollPos => oldScrollPos+ 1);
+    //                     setStep(oldStep => oldStep + 1);
+                    
 
-                           
-                    //     }
-                    // }else{
-                    //         if(step == 10){
-                    //             setStep(20);
-                    //         }else{
-                    //             console.log("huh");
-                    //             setStep(oldScrollPos => ((oldScrollPos % 8) + 2) * 10);
-                    //         }
-                    // }
     
-            }, 100)}
-            if(window.innerWidth <= 750){
-                window.addEventListener('click', handleMobileScroll);
-            }
+    //         }, 100)}
+    //         if(window.innerWidth <= 750){
+    //             window.addEventListener('click', handleMobileScroll);
+    //         }
         
-        return () => {
-            clearInterval(handleMobileScroll);
-            window.removeEventListener('click', handleMobileScroll);
-          };
-    }, [])
+    //     return () => {
+    //         clearInterval(handleMobileScroll);
+    //         window.removeEventListener('click', handleMobileScroll);
+    //       };
+    // }, [])
     const handlers = useSwipeable({
         // onSwiping: (eventData) => {
         //     console.log(eventData);

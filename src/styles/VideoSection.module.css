@@ -8,6 +8,7 @@
 }
 .videoSection .contentContainer .linkContainer{
     width: 50%;
+    position: relative;
 }
 .videoSection .contentContainer .linkContainer .photo{
     width: 100%;

@@ -39,7 +39,7 @@ const VideoSection = ({ videosData}) => {
                         <swiper-slide key={i} style={{paddingBottom : 30, height: 'inherit'}}>
                             <div className={`container ${styles.contentContainer}`}>
                                 { videoData.fields.link ? (
-                                    <a href={videoData.fields.link} className={`${styles.linkContainer}`}>
+                                    <a href={videoData.fields.link} target="_blank" className={`${styles.linkContainer}`}>
                                         <ContentfulImage
                                         src={videoData.fields.media[0].fields.file.url}
                                         width={videoData.fields.media[0].fields.file.details.image.width}
@@ -54,6 +54,7 @@ const VideoSection = ({ videosData}) => {
                                     </a>
                                 ) : (
                                     <ContentfulImage
+                                    
                                         src={videoData.fields.media[0].fields.file.url}
                                         width={videoData.fields.media[0].fields.file.details.image.width}
                                         height={videoData.fields.media[0].fields.file.details.image.height}
