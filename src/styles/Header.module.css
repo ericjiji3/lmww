@@ -67,7 +67,13 @@
         font-size: 25px;
     }
 }
-@media(max-width: 600px){
+@media(max-width: 750px){
+    .aboveNav .logoContainer span{
+        letter-spacing: 7.5px;
+    }
+    .aboveNav .logoContainer .time{
+        letter-spacing: 7.5px;
+    }
     .aboveNav .empower span{
         display: block;
         letter-spacing: 1px;
@@ -76,9 +82,14 @@
         width: 30px;
         height: auto;
     }
+    .aboveNav .logoContainer .empower{
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
     .aboveNav .logoContainer h1{
         font-family: 'Chomsky';
-        margin: 10px 0;
+        margin: 10px 0 5px;
         font-size: 20px;
     }
     .navSectionContainer .navSection{

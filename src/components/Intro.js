@@ -181,122 +181,6 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
     //       };
     // }, [])
     const handlers = useSwipeable({
-        // onSwiping: (eventData) => {
-        //     console.log(eventData);
-        //     if(eventData.deltaY > 0){
-        //         setScrollPos(scrollPos + 1);
-        //     }
-        //     if(scrollPos == 1){
-        //         setHideScroll(true);
-        //     }
-        //     if(activePhoto < introPhotos[0].fields.images.length - 3){
-        //         if(scrollPos % 8 == 0){
-        //             console.log('scroll position hit: ' , scrollPos);
-        //             setActivePhoto(scrollPos/8);
-        //             setStep(0);
-        //         }
-        //         if(activePhoto % 2 == 0){
-        //             setStep(scrollPos % 8);
-        //         }else{
-        //             setStep(-(scrollPos % 8));
-        //             console.log('odd photo: ', step);
-        //         }
-        //     }else{
-        //             console.log(introPhotos[0].fields.images.length);
-        //             if(activePhoto == introPhotos[0].fields.images.length - 1 && step == 70){
-        //                 console.log('ENDINGINGINGD');
-        //                 setHideIntro(true);
-        //                 setIntroFinish(true);
-        //             }else{
-        //                 if(scrollPos % 8 == 0){
-        //                     setActivePhoto(scrollPos/8);
-        //                     setStep(10);
-        //                 }else{
-        //                     console.log('LAST 3 IMAGES');
-        //                     // setActivePhoto(scrollPos/8);
-        //                     setStep(((step / 10) + 1) * 10);
-        //                 }
-                        
-        //             }            
-        //     }
-        // },
-        // onTouchStartOrOnMouseDown: ({event}) => {
-        //     setInterval(function(){
-        //         setScrollPos(scrollPos + 1);
-        //         if(scrollPos == 1){
-        //             setHideScroll(true);
-        //         }
-        //         if(activePhoto < introPhotos[0].fields.images.length - 3){
-        //             if(scrollPos % 8 == 0){
-        //                 console.log('scroll position hit: ' , scrollPos);
-        //                 setActivePhoto(scrollPos/8);
-        //                 setStep(0);
-        //             }
-        //             if(activePhoto % 2 == 0){
-        //                 setStep(scrollPos % 8);
-        //             }else{
-        //                 setStep(-(scrollPos % 8));
-        //                 console.log('odd photo: ', step);
-        //             }
-        //         }else{
-        //                 console.log(introPhotos[0].fields.images.length);
-        //                 if(activePhoto == introPhotos[0].fields.images.length - 1 && step == 70){
-        //                     console.log('ENDINGINGINGD');
-        //                     setHideIntro(true);
-        //                     setIntroFinish(true);
-        //                 }else{
-        //                     if(scrollPos % 8 == 0){
-        //                         setActivePhoto(scrollPos/8);
-        //                         setStep(10);
-        //                     }else{
-        //                         console.log('LAST 3 IMAGES');
-        //                         // setActivePhoto(scrollPos/8);
-        //                         setStep(((step / 10) + 1) * 10);
-        //                     }
-                            
-        //                 }            
-        //         }
-        //     }, 500)
-        // },
-        // onSwipedUp: (eventData) => {
-        //     console.log(eventData);
-        //     if(eventData.deltaY < 0){
-        //         setScrollPos(scrollPos + 1);
-        //     }
-        //     if(scrollPos == 1){
-        //         setHideScroll(true);
-        //     }
-        //     if(activePhoto < introPhotos[0].fields.images.length - 3){
-        //         if(scrollPos % 8 == 0){
-        //             console.log('scroll position hit: ' , scrollPos);
-        //             setActivePhoto(scrollPos/8);
-        //             setStep(0);
-        //         }
-        //         if(activePhoto % 2 == 0){
-        //             setStep(scrollPos % 8);
-        //         }else{
-        //             setStep(-(scrollPos % 8));
-        //             console.log('odd photo: ', step);
-        //         }
-        //     }else{
-        //             console.log(introPhotos[0].fields.images.length);
-        //             if(activePhoto == introPhotos[0].fields.images.length - 1 && step == 70){
-        //                 console.log('ENDINGINGINGD');
-        //                 setHideIntro(true);
-        //                 setIntroFinish(true);
-        //             }else{
-        //                 if(scrollPos % 8 == 0){
-        //                     setActivePhoto(scrollPos/8);
-        //                     setStep(10);
-        //                 }else{
-        //                     console.log('LAST 3 IMAGES');
-        //                     // setActivePhoto(scrollPos/8);
-        //                     setStep(((step / 10) + 1) * 10);
-        //                 }
-                        
-        //             }            
-        //     }
-        // },
         swipeDuration: 500,
         preventScrollOnSwipe: true
       });
@@ -309,7 +193,7 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                     <div className={`${styles.scroller}`}></div>
                     </div>
                 </div>
-                <div>{scrollPos}</div>
+            
                 <div className={styles.photosContainer}>
                 
                 {introPhotos[0].fields.images && introPhotos[0].fields.images.map((photo, i) => {

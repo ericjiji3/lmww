@@ -60,11 +60,12 @@
     height: 100px;
     background-size: cover;
 }
-@media(max-width: 600px){
+@media(max-width: 750px){
     .gearSection{
         padding-top: 15px;
         padding-bottom: 15px;
-        justify-content: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #858585;
     }
     .gearSection p{
         margin-bottom: 0px;
@@ -83,11 +84,11 @@
         position: absolute;
         top: 5%;
     }
-    .gearSection .contentContainer:nth-child(even) div{
+    /* .gearSection .contentContainer:nth-child(even) div{
         position: absolute;
         top: 5%;
         right: 0%;
-    }
+    } */
     .gearSection .contentContainer .fiveDollar{
         background-image: url('../../public/images/five.png');
         width: 50px;

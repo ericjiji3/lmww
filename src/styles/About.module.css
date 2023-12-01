@@ -32,12 +32,27 @@
     margin-bottom: 10px;
     font-size: 1.35em;
 }
-@media(max-width: 600px){
+@media(max-width: 750px){
     .aboutSection{
         padding: 15px 0;
     }
     .aboutSection .contentContainer:first-child{
         margin-top: 0;
         margin-bottom: 20px;
+        flex-direction: row;
+    }
+    .aboutSection .contentContainer{
+        flex-direction: row-reverse;
+    }
+    .aboutSection .contentContainer img{
+        width: 50%;
+        height: auto;
+        object-fit: cover;
+        margin-bottom: 0px;
+        margin-left: 10px;
+    }
+    .aboutSection .contentContainer:first-child img{
+        margin-left: 0;
+        margin-right: 10px;
     }
 }

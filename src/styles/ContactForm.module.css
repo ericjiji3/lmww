@@ -40,9 +40,17 @@
 .contactContainer .contactForm .submitButt:hover{
     cursor: pointer;
 }
-@media(max-width: 700px){
+@media(max-width: 750px){
+    .contactContainer{
+        padding: 15px 0;
+    }
     .contactContainer .contactForm{
         width: 90%;
+       
+    }
+    .contactContainer .contactForm .inputContainer input, .inputContainer select, .inputContainer textarea{
+        padding: 1px;
+    
     }
     .contactContainer .contactForm .inputContainer select{
         appearance: none;
@@ -51,7 +59,6 @@
         width: 100%;
         z-index: 1;
         min-width: 15ch;
-        max-width: 30ch;
         padding: 2px;
         /* border-width: 2px;
         border-style: inset;
@@ -59,7 +66,7 @@
         border-image: initial; */
       
         cursor: pointer;
-        line-height: 1.1;
+        /* line-height: 1.1; */
 
         background-color: #fff;
 

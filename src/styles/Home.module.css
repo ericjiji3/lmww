@@ -87,7 +87,17 @@
     border-left: 1px solid #858585;
   }
 }
-@media(max-width: 600px){
+@media(max-width: 750px){
+  .main .grid{
+    flex-direction: column;
+  }
+  .main .grid .column1{
+    width: 100%;
+  }
+  .main .grid .column2{
+    width: 100%;
+    border-left: 1px solid #858585;
+  }
   .main .compContainer .compHeader{
     margin-top: 15px;
     letter-spacing: 2.5px;

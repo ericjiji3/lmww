@@ -6,3 +6,8 @@
     object-fit: contain;
     height: auto;
 }
+@media(max-width: 750px){
+    .fabricSection{
+        padding: 15px 0;
+    }
+}

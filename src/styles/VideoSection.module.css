@@ -43,7 +43,7 @@
         width: 100%;
     }
 }
-@media(max-width: 600px){
+@media(max-width: 750px){
     .videoSection{
         padding: 15px 0;
     }

@@ -17,7 +17,7 @@
     margin-bottom: 10px;
     font-size: 1.35em;
 }
-@media(max-width: 600px){
+@media(max-width: 750px){
     .verticalSection{
         padding: 15px 0;
     }
