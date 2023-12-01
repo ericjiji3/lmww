@@ -10,4 +10,7 @@
     .fabricSection{
         padding: 15px 0;
     }
+    .fabricSection p{
+        margin-top: -20px;
+    }
 }

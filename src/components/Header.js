@@ -16,6 +16,7 @@ const Header = () =>{
       }, [1000]);
     }, []);
     useEffect(()=>{
+        setWidth(window.innerWidth);
         window.addEventListener("resize", () => setWidth(window.innerWidth));
     }, [])
     return(
@@ -30,11 +31,9 @@ const Header = () =>{
                             <span><b>CREATIVE~</b></span>
                             </div>
                             :
-                            <Image
-                        src={Logo}
-                        width={100}
-                        alt="oops"
-                    />
+                            <div>
+                            </div>
+                            
                         
                     }
                     
@@ -47,20 +46,48 @@ const Header = () =>{
                             </div>
                             :
                             <div className={`${styles.empower}`}>
-                            <span><b>~EMPOWER~</b></span>
-                            <span><b>THE~</b></span>
-                            <span><b>CREATIVE~</b></span>
+                            <span><b>~&nbsp;EMPOWER</b></span>
+                            <span>&nbsp;<b>THE</b>&nbsp;</span>
+                            <span><b>CREATIVE&nbsp;~</b></span>
                             </div>
                         }
-                        <h1>Las Muchachos Worldwide</h1>
+                        <div className={styles.headerImage}>
+                            {width <= 750 ? 
+                                <Image
+                        src={Logo}
+                        width={100}
+                        alt="oops"
+                    /> :
+                    <div>
+                        </div>
+                        }
+                        
+                    <h1>Las Muchachos Worldwide</h1>
+                    {width <= 750 ? 
+                                <Image
+                        src={Logo}
+                        width={100}
+                        alt="oops"
+                    /> :
+                    <div>
+                        </div>
+                        }
+                        </div>
+                        
                         <span className={`${styles.time}`}>{ClockState}</span>
                     </div>
+
+                    {width <= 750 ? 
+                        <div>
+                        </div>
+                        :
                     
-                    <Image
+                        <Image
                         src={Logo}
                         width={100}
                         alt="oops"
                     />
+                        }
                 </div>
                 <div className={`${styles.navSectionContainer}`}>
                     <div className={`container`}>

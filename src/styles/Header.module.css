@@ -68,8 +68,21 @@
     }
 }
 @media(max-width: 750px){
+    .headerContainer{
+        padding-top: 10px;
+    }
+    .aboveNav {
+        margin-bottom: 10px;
+    }
+    .aboveNav .logoContainer{
+        width: 100%;
+    }
     .aboveNav .logoContainer span{
         letter-spacing: 7.5px;
+    }
+    .aboveNav .logoContainer .headerImage{
+        display: flex;
+        justify-content: space-between;
     }
     .aboveNav .logoContainer .time{
         letter-spacing: 7.5px;
@@ -79,28 +92,32 @@
         letter-spacing: 1px;
     }
     .aboveNav img{
-        width: 25px;
+        width: 15px;
         height: auto;
+        object-fit: contain;
     }
     .aboveNav .logoContainer .empower{
         display: flex;
         justify-content: center;
-        margin-top: 10px;
+        margin-top: 5px;
     }
     .aboveNav .logoContainer h1{
         font-family: 'Chomsky';
-        margin: 10px 0 5px;
+        margin: 5px 0px -2.5px;
         font-size: 20px;
     }
     .navSectionContainer .navSection{
         margin: 10px 0;
-        justify-content: space-between;
-        
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .navSectionContainer .navSection li{
+        margin: 0 2.5px;
     }
     .navSectionContainer .navSection h3{
         /* font-style: italic; */
         font-weight: normal;
         letter-spacing: 0px;
-        
+        font-size: 0.4em!important;
     }
 }
