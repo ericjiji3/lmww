@@ -67,6 +67,9 @@
         justify-content: space-between;
         border-bottom: 1px solid #858585;
     }
+    .gearSection .contentContainer h3{
+        text-align: center;
+    }
     .gearSection p{
         margin-bottom: 0px;
     }
