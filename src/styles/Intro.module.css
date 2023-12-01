@@ -225,6 +225,27 @@
     .introContainer{
         height: 100dvh;
     }
+    .scrollContainer{
+        width: unset;
+        height: unset;
+        border: none;
+        border-radius: none;
+        position: absolute;
+      }
+      
+      .scroller{
+        width: 30px;
+        height: 30px;
+        border-radius: none;
+        background-color: unset;
+        position: unset;
+        top: unset;
+        left: unset;
+        bottom: unset;
+        background-image: url('../../public/images/tap.gif');
+        animation: none;
+        background-size: cover;
+      }
 
     .introContainer .photosContainer .photoContainer.active:nth-child(odd){
         width: 0px;

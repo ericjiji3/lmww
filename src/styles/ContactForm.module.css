@@ -44,4 +44,29 @@
     .contactContainer .contactForm{
         width: 90%;
     }
+    .contactContainer .contactForm .inputContainer select{
+        appearance: none;
+        background-color: transparent;
+        margin: 0;
+        width: 100%;
+        z-index: 1;
+        min-width: 15ch;
+        max-width: 30ch;
+        padding: 2px;
+        /* border-width: 2px;
+        border-style: inset;
+        border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+        border-image: initial; */
+      
+        cursor: pointer;
+        line-height: 1.1;
+
+        background-color: #fff;
+
+
+    }
+    .contactContainer .contactForm .inputContainer select::-ms-expand {
+        display: none;
+      }
+
 }

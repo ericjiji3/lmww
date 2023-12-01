@@ -4,7 +4,6 @@ import { useSwipeable } from 'react-swipeable';
 import ContentfulImage from '@/components/ContentfulImage';
 import React,{useState, useEffect, useRef} from 'react';
 import Image from 'next/image';
-import scrollDown from '../../public/images/scroll-down.gif';
 
 const INITIAL_TIMER = 30;
 const TARGET_TIMER = 0;
@@ -37,6 +36,9 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                 setActivePhoto(scrollPos/8);
                 setStep(0);
             }
+            if(window.innerWidth <= 750 && step == 1){
+                setHideScroll(true);
+            }
         }else{
             if(scrollPos % 8 == 0){
                 if(window.innerWidth > 750){
@@ -55,7 +57,7 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                         setIntroFinish(true);
                     }else{
                         console.log('LAST 3 IMAGES');
-    
+                        
                         setActivePhoto(scrollPos/8);
                         setStep(0);
                     }
@@ -127,7 +129,10 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
             
         
         };
-        window.addEventListener('mousewheel', throttle(handleScroll, 100));
+        if(window.innerWidth > 750){
+            window.addEventListener('mousewheel', throttle(handleScroll, 100));
+        }
+        
         return()=>{
             window.removeEventListener('mousewheel', throttle(handleScroll, 100));
             
@@ -166,7 +171,10 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                     // }
     
             }, 100)}
-        window.addEventListener('click', handleMobileScroll);
+            if(window.innerWidth <= 750){
+                window.addEventListener('click', handleMobileScroll);
+            }
+        
         return () => {
             clearInterval(handleMobileScroll);
             window.removeEventListener('click', handleMobileScroll);
