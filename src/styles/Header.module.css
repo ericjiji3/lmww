@@ -112,12 +112,12 @@
         flex-wrap: wrap;
     }
     .navSectionContainer .navSection li{
-        margin: 0 2.5px;
+        margin: 0 5px;
     }
     .navSectionContainer .navSection h3{
         /* font-style: italic; */
         font-weight: normal;
         letter-spacing: 0px;
-        font-size: 0.4em!important;
+        font-size: 0.35em!important;
     }
 }
