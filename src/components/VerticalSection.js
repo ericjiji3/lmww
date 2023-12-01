@@ -37,6 +37,7 @@ const VerticalSection = ({ videosData}) => {
                     return(
                         <swiper-slide key={i} style={{paddingBottom : 30}}>
                             <div className={`container ${styles.contentContainer}`}>
+                                <a href={videoData.fields.link} target="_blank" className={`${styles.linkContainer}`}>
                                 <ContentfulImage
                                     src={videoData.fields.media[0].fields.file.url}
                                     width={videoData.fields.media[0].fields.file.details.image.width}
@@ -48,6 +49,7 @@ const VerticalSection = ({ videosData}) => {
                                     // style={{float: 'left', marginRight: '25px'}}
                                     
                                 />
+                                </a>
                                 <h3>{videoData.fields.title}</h3>
                                 <RichText content={videoData.fields.description}/>
                             </div>
