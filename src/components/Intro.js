@@ -135,22 +135,12 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
         
                     if(activePhoto < introPhotos[0].fields.images.length - 3){
                         if(activePhoto % 2 == 0){
-                            if(scrollPos % 8 == 0){
-                                // console.log('scroll position hit: ' , scrollPos);
-                                setActivePhoto(oldActivePhoto => oldActivePhoto + 1);
-                                setStep(0);
-                            }else{
                                 setStep(oldStep => oldStep + 1);
-                            }
+
                         }else{
-                            if(scrollPos % 8 == 0){
-                                // console.log('scroll position hit: ' , scrollPos);
-                                setActivePhoto(oldActivePhoto => oldActivePhoto + 1);
-                                setStep(0);
-                            }else{
                                 setStep(oldStep => oldStep - 1);
                                 console.log('odd photo: ', step);
-                            }
+
                            
                         }
                     }else{
@@ -162,7 +152,7 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                             }
                     }
     
-            }, 500)}
+            }, 100)}
         window.addEventListener('click', handleMobileScroll);
         return () => {
             clearInterval(handleMobileScroll);

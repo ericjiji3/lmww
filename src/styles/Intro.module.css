@@ -173,11 +173,11 @@
 } */
 .scrollTextContainer{
     opacity: 1;
-    transition: all 0.15s ease-in;
+    transition: all 0.15s linear;
 }
 .scrollTextContainer.inactive{
     opacity: 0;
-    transition: all 0.15s ease-in;
+    transition: all 0.15s linear;
 }
 .scrollContainer{
     width: 30px;
@@ -226,4 +226,89 @@
         height: 100dvh;
     }
 
+    .introContainer .photosContainer .photoContainer.active:nth-child(odd){
+        width: 0px;
+        display: block;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-child(odd)[data-step="0"]
+    {
+        left: 50%;
+        width: 0px;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-child(odd)[data-step="1"]
+    {
+        left: 40%;
+        width: 50px;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-child(odd)[data-step="2"]
+    {
+        left: 30%;
+        width: 100px;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-child(odd)[data-step="3"]
+    {
+        left: 20%;
+        width: 150px;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-child(odd)[data-step="4"]
+    {
+        left: 10%;
+        width: 200px;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-child(odd)[data-step="5"]
+    {
+        left: 0%;
+        width: 250px;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-child(odd)[data-step="6"]
+    {
+        left: -10%;
+        width: 300px;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-child(odd)[data-step="7"]
+    {
+        left: -20%;
+        width: 350px;
+    }
+
+    .introContainer .photosContainer .photoContainer.active:nth-child(even)[data-step="0"]
+    {
+        left: 50%;
+        width: 0px;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-child(even)[data-step="1"]
+    {
+        left: 60%;
+        width: 50px;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-child(even)[data-step="2"]
+    {
+        left: 70%;
+        width: 100px;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-child(even)[data-step="3"]
+    {
+        left: 80%;
+        width: 150px;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-child(even)[data-step="4"]
+    {
+        left: 90%;
+        width: 200px;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-child(even)[data-step="5"]
+    {
+        left: 100%;
+        width: 250px;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-child(even)[data-step="6"]
+    {
+        left: 110%;
+        width: 300px;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-child(even)[data-step="7"]
+    {
+        left: 120%;
+        width: 350px;
+    }
 }
