@@ -221,7 +221,7 @@
     }
   }
 
-@media(max-width: 500px){
+@media(max-width: 750px){
     .introContainer{
         height: 100dvh;
     }
@@ -237,37 +237,37 @@
     }
     .introContainer .photosContainer .photoContainer.active:nth-child(odd)[data-step="1"]
     {
-        left: 40%;
+        left: 35%;
         width: 50px;
     }
     .introContainer .photosContainer .photoContainer.active:nth-child(odd)[data-step="2"]
     {
-        left: 30%;
+        left: 20%;
         width: 100px;
     }
     .introContainer .photosContainer .photoContainer.active:nth-child(odd)[data-step="3"]
     {
-        left: 20%;
+        left: 5%;
         width: 150px;
     }
     .introContainer .photosContainer .photoContainer.active:nth-child(odd)[data-step="4"]
     {
-        left: 10%;
+        left: -10%;
         width: 200px;
     }
     .introContainer .photosContainer .photoContainer.active:nth-child(odd)[data-step="5"]
     {
-        left: 0%;
+        left: -25%;
         width: 250px;
     }
     .introContainer .photosContainer .photoContainer.active:nth-child(odd)[data-step="6"]
     {
-        left: -10%;
+        left: -40%;
         width: 300px;
     }
     .introContainer .photosContainer .photoContainer.active:nth-child(odd)[data-step="7"]
     {
-        left: -20%;
+        left: -55%;
         width: 350px;
     }
 
@@ -278,37 +278,83 @@
     }
     .introContainer .photosContainer .photoContainer.active:nth-child(even)[data-step="1"]
     {
-        left: 60%;
+        left: 65%;
         width: 50px;
     }
     .introContainer .photosContainer .photoContainer.active:nth-child(even)[data-step="2"]
     {
-        left: 70%;
+        left: 80%;
         width: 100px;
     }
     .introContainer .photosContainer .photoContainer.active:nth-child(even)[data-step="3"]
     {
-        left: 80%;
+        left: 95%;
         width: 150px;
     }
     .introContainer .photosContainer .photoContainer.active:nth-child(even)[data-step="4"]
     {
-        left: 90%;
+        left: 110%;
         width: 200px;
     }
     .introContainer .photosContainer .photoContainer.active:nth-child(even)[data-step="5"]
     {
-        left: 100%;
+        left: 125%;
         width: 250px;
     }
     .introContainer .photosContainer .photoContainer.active:nth-child(even)[data-step="6"]
     {
-        left: 110%;
+        left: 140%;
         width: 300px;
     }
     .introContainer .photosContainer .photoContainer.active:nth-child(even)[data-step="7"]
     {
-        left: 120%;
+        left: 155%;
         width: 350px;
+    }
+
+
+    /* .introContainer .photosContainer .photoContainer.active:nth-last-child(-n+3){
+        display: none;
+    } */
+    .introContainer .photosContainer .photoContainer.active:nth-last-child(-n+3)[data-step="0"]
+    {
+        display: block!important;
+        width: 50vw;
+        left: 50%;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-last-child(-n+3)[data-step="1"]
+    {
+        width: 150vw;
+        left: 50%!important;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-last-child(-n+3)[data-step="2"]
+    {
+        width: 300vw;
+        left: 50%!important;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-last-child(-n+3)[data-step="3"]
+    {
+        width: 600vw;
+        left: 50%!important;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-last-child(-n+3)[data-step="4"]
+    {
+        width: 1200vw;
+        left: 50%!important;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-last-child(-n+3)[data-step="5"]
+    {
+        width: 2400vw;
+        left: 50%!important;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-last-child(-n+3)[data-step="6"]
+    {
+        width: 4800vw;
+        left: 50%!important;
+    }
+    .introContainer .photosContainer .photoContainer.active:nth-last-child(-n+3)[data-step="7"]
+    {
+        width: 9600vw;
+        left: 50%!important;
     }
 }

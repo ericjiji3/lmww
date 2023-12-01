@@ -64,7 +64,7 @@
     .gearSection{
         padding-top: 15px;
         padding-bottom: 15px;
-        justify-content: space-between;
+        justify-content: center;
     }
     .gearSection p{
         margin-bottom: 0px;
@@ -76,8 +76,46 @@
         margin-bottom: 10px;
         
     }
-    .gearSection .contentContainer:nth-child(even){
-        margin-right: 5px;
-        
+    .gearSection .contentContainer img{
+        height: 100px;
+    }
+    .gearSection .contentContainer div{
+        position: absolute;
+        top: 5%;
+    }
+    .gearSection .contentContainer:nth-child(even) div{
+        position: absolute;
+        top: 5%;
+        right: 0%;
+    }
+    .gearSection .contentContainer .fiveDollar{
+        background-image: url('../../public/images/five.png');
+        width: 50px;
+        height: 50px;
+        background-size: cover;
+    }
+    .gearSection .contentContainer .tenDollar{
+        background-image: url('../../public/images/ten.png');
+        width: 50px;
+        height: 50px;
+        background-size: cover;
+    }
+    .gearSection .contentContainer .fifteenDollar{
+        background-image: url('../../public/images/fifteen.png');
+        width: 50px;
+        height: 50px;
+        background-size: cover;
+    }
+    .gearSection .contentContainer .twentyfiveDollar{
+        background-image: url('../../public/images/twentyfive.png');
+        width: 50px;
+        height: 50px;
+        background-size: cover;
+    }
+    .gearSection .contentContainer .thirtyDollar{
+        background-image: url('../../public/images/thirty.png');
+        width: 50px;
+        height: 50px;
+        background-size: cover;
     }
 }

@@ -49,4 +49,15 @@
     .photoSection .contentContainer .titleDescription{
         margin-right: 10px;
     }
+    .photoSection .contentContainer .swipeContain{
+        height: initial;
+    }
+    .photoSection .contentContainer .swipeContain img{
+        height: 100%;
+        object-fit: cover;
+    }
+    .photoSection .contentContainer .swipeContain swiper-container{
+        height: 100%;
+        padding-bottom: 0;
+    }
 }

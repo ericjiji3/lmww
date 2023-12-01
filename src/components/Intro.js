@@ -25,11 +25,11 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
     
     
     useEffect(()=>{
-        // console.log("scroll pos: ", scrollPos);
+        console.log("scroll pos: ", scrollPos);
         // console.log(window.innerWidth/12);
         //this is window width / 2 / 12(# of increments)
-        // console.log('active photo: ' , activePhoto);
-        // console.log('step: ', step)
+        console.log('active photo: ' , activePhoto);
+        console.log('step: ', step)
 
         if(activePhoto < introPhotos[0].fields.images.length - 3){
             if(scrollPos % 8 == 0){
@@ -39,14 +39,28 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
             }
         }else{
             if(scrollPos % 8 == 0){
-                if(activePhoto == introPhotos[0].fields.images.length - 1 && step == 90){
-                    setHideIntro(true);
-                    setIntroFinish(true);
+                if(window.innerWidth > 750){
+                    if(activePhoto == introPhotos[0].fields.images.length - 1 && step == 90){
+                        setHideIntro(true);
+                        setIntroFinish(true);
+                    }else{
+                        console.log('LAST 3 IMAGES');
+    
+                        setActivePhoto(scrollPos/8);
+                        setStep(10);
+                    }
                 }else{
-                    console.log('LAST 3 IMAGES');
-                    setActivePhoto(scrollPos/8);
-                    setStep(10);
+                    if(activePhoto == introPhotos[0].fields.images.length - 1 && step == 8){
+                        setHideIntro(true);
+                        setIntroFinish(true);
+                    }else{
+                        console.log('LAST 3 IMAGES');
+    
+                        setActivePhoto(scrollPos/8);
+                        setStep(0);
+                    }
                 }
+                
                 
             }
         }
@@ -123,34 +137,33 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
     useEffect(() => {
         const handleMobileScroll = (e) => {
             e.preventDefault();
-            console.log('step: ', step);
-            console.log('hit: ', scrollPos);
+
             setInterval(()=>{
                 
                     setScrollPos(oldScrollPos => oldScrollPos+ 1);
-                    
-                    if(scrollPos == 1){
-                        setHideScroll(oldHideScroll => !oldHideScroll);
-                    }
+                    setStep(oldStep => oldStep + 1);
+                    // if(scrollPos == 1){
+                    //     setHideScroll(oldHideScroll => !oldHideScroll);
+                    // }
         
-                    if(activePhoto < introPhotos[0].fields.images.length - 3){
-                        if(activePhoto % 2 == 0){
-                                setStep(oldStep => oldStep + 1);
+                    // if(activePhoto < introPhotos[0].fields.images.length - 3){
+                    //     if(activePhoto % 2 == 0){
+                    //             setStep(oldStep => oldStep + 1);
 
-                        }else{
-                                setStep(oldStep => oldStep - 1);
-                                console.log('odd photo: ', step);
+                    //     }else{
+                    //             setStep(oldStep => oldStep - 1);
+                    //             console.log('odd photo: ', step);
 
                            
-                        }
-                    }else{
-                            if(step == 10){
-                                setStep(20);
-                            }else{
-                                console.log("huh");
-                                setStep(oldScrollPos => ((oldScrollPos % 8) + 2) * 10);
-                            }
-                    }
+                    //     }
+                    // }else{
+                    //         if(step == 10){
+                    //             setStep(20);
+                    //         }else{
+                    //             console.log("huh");
+                    //             setStep(oldScrollPos => ((oldScrollPos % 8) + 2) * 10);
+                    //         }
+                    // }
     
             }, 100)}
         window.addEventListener('click', handleMobileScroll);
