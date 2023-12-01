@@ -25,15 +25,15 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
     
     
     useEffect(()=>{
-        console.log("scroll pos: ", scrollPos);
+        // console.log("scroll pos: ", scrollPos);
         // console.log(window.innerWidth/12);
         //this is window width / 2 / 12(# of increments)
-        console.log('active photo: ' , activePhoto);
-        console.log('step: ', step)
+        // console.log('active photo: ' , activePhoto);
+        // console.log('step: ', step)
 
         if(activePhoto < introPhotos[0].fields.images.length - 3){
             if(scrollPos % 8 == 0){
-                console.log('scroll position hit: ' , scrollPos);
+                // console.log('scroll position hit: ' , scrollPos);
                 setActivePhoto(scrollPos/8);
                 setStep(0);
             }
@@ -121,34 +121,51 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
     }, [scrollPos, activePhoto, step, hideIntro, timer])
 
     useEffect(() => {
-        const handleMobileScroll = () => {
+        const handleMobileScroll = (e) => {
+            e.preventDefault();
+            console.log('step: ', step);
+            console.log('hit: ', scrollPos);
             setInterval(()=>{
-                    setScrollPos(scrollPos+ 1);
+                
+                    setScrollPos(oldScrollPos => oldScrollPos+ 1);
+                    
                     if(scrollPos == 1){
-                        setHideScroll(true);
+                        setHideScroll(oldHideScroll => !oldHideScroll);
                     }
         
                     if(activePhoto < introPhotos[0].fields.images.length - 3){
                         if(activePhoto % 2 == 0){
-                            console.log('hit: ', scrollPos);
-                            setStep(scrollPos % 8);
+                            if(scrollPos % 8 == 0){
+                                // console.log('scroll position hit: ' , scrollPos);
+                                setActivePhoto(oldActivePhoto => oldActivePhoto + 1);
+                                setStep(0);
+                            }else{
+                                setStep(oldStep => oldStep + 1);
+                            }
                         }else{
-                            setStep(-(scrollPos % 8));
-                            console.log('odd photo: ', step);
+                            if(scrollPos % 8 == 0){
+                                // console.log('scroll position hit: ' , scrollPos);
+                                setActivePhoto(oldActivePhoto => oldActivePhoto + 1);
+                                setStep(0);
+                            }else{
+                                setStep(oldStep => oldStep - 1);
+                                console.log('odd photo: ', step);
+                            }
+                           
                         }
                     }else{
                             if(step == 10){
                                 setStep(20);
                             }else{
                                 console.log("huh");
-                                setStep(((scrollPos % 8) + 2) * 10);
+                                setStep(oldScrollPos => ((oldScrollPos % 8) + 2) * 10);
                             }
                     }
     
             }, 500)}
         window.addEventListener('click', handleMobileScroll);
         return () => {
-            clearInterval(interval);
+            clearInterval(handleMobileScroll);
             window.removeEventListener('click', handleMobileScroll);
           };
     }, [])
@@ -275,12 +292,13 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
    
     return(
         <>
-            <div {...handlers} className={hideIntro ? `${styles.introContainer} ${styles.inactive}`: `${styles.introContainer}`}>
+            <div {...handlers} className={hideIntro ? `${styles.introContainer} ${styles.inactive}`: `${styles.introContainer}`} >
                 <div className={hideScroll ? `${styles.scrollTextContainer} ${styles.inactive}` : `${styles.scrollTextContainer}`}>
                     <div className={`${styles.scrollContainer}`}>
                     <div className={`${styles.scroller}`}></div>
                     </div>
                 </div>
+                <div>{scrollPos}</div>
                 <div className={styles.photosContainer}>
                 
                 {introPhotos[0].fields.images && introPhotos[0].fields.images.map((photo, i) => {
@@ -295,6 +313,7 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                                 alt="oops"
                                 priority
                             />
+                            
                         </div>
                         
                     )           
