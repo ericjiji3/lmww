@@ -36,22 +36,25 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                 setActivePhoto(scrollPos/8);
                 setStep(0);
             }
-            if(window.innerWidth <= 750 && step == 1){
+            // if(window.innerWidth <= 750 && step == 1){
+            //     setHideScroll(true);
+            // }
+            if(step==1){
                 setHideScroll(true);
             }
         }else{
             if(scrollPos % 8 == 0){
-                if(window.innerWidth > 750){
-                    if(activePhoto == introPhotos[0].fields.images.length - 1 && step == 90){
-                        setHideIntro(true);
-                        setIntroFinish(true);
-                    }else{
-                        console.log('LAST 3 IMAGES');
+                // if(window.innerWidth > 750){
+                //     if(activePhoto == introPhotos[0].fields.images.length - 1 && step == 90){
+                //         setHideIntro(true);
+                //         setIntroFinish(true);
+                //     }else{
+                //         console.log('LAST 3 IMAGES');
     
-                        setActivePhoto(scrollPos/8);
-                        setStep(10);
-                    }
-                }else{
+                //         setActivePhoto(scrollPos/8);
+                //         setStep(10);
+                //     }
+                // }else{
                     if(activePhoto == introPhotos[0].fields.images.length - 1 && step == 8){
                         setHideIntro(true);
                         setIntroFinish(true);
@@ -61,7 +64,7 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
                         setActivePhoto(scrollPos/8);
                         setStep(0);
                     }
-                }
+                // }
                 
                 
             }
@@ -140,11 +143,12 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
     
             }, 100)}
         
-        if(window.innerWidth > 750){
-            window.addEventListener('mousewheel', throttle(handleScroll, 100));
-        }else{
-            window.addEventListener('click', handleMobileScroll);
-        }
+        // if(window.innerWidth > 750){
+        //     window.addEventListener('mousewheel', throttle(handleScroll, 100));
+        // }else{
+        //     window.addEventListener('click', handleMobileScroll);
+        // }
+        window.addEventListener('click', handleMobileScroll);
         if(scrollPos == 58){
             return()=>{
                 clearInterval(handleMobileScroll);
@@ -152,7 +156,7 @@ const Intro = ({ introPhotos, setIntroFinish }) => {
             
         }
         return()=>{
-            window.removeEventListener('mousewheel', throttle(handleScroll, 100));
+            // window.removeEventListener('mousewheel', throttle(handleScroll, 100));
             window.removeEventListener('click', handleMobileScroll);
 
         }
