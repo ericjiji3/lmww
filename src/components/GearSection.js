@@ -9,7 +9,10 @@ const GearSection = ({ gearsData}) => {
     return(
         <>
             <div className={`container ${styles.gearSection}`}>
-                <RichText content={gearsData.fields.gearGeneralDescription}/>
+                <div className={styles.gearHeading}>
+                    <RichText content={gearsData.fields.gearGeneralDescription}/>
+                </div>
+                
                 {gearsData.fields.gearField.map((gearData, i) => {
                     return(
                             <div className={`${styles.contentContainer}`} key={i}>

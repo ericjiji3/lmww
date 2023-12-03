@@ -8,12 +8,31 @@
     display: flex;
     flex-direction: column;
 }
-.verticalSection .contentContainer img{
+.verticalSection .contentContainer .linkContainer{
     width: 100%;
     height: auto;
-    margin-bottom: 25px;
+    position: relative;
+    border: 2px solid #000000;
+}
+.verticalSection .contentContainer .linkContainer:before{
+    content: 'CLICK ME';
+    font-weight: bold;
+    font-size: 0.6em;
+    letter-spacing: 2px;
+    background: #000000;
+    position: absolute;
+    padding: 5px 10px;
+    color: #fff;
+    left: 0;
+    top: 0;
+}
+.verticalSection .contentContainer img{
+    width: 100%;
+    height: 100%;
+    margin-bottom: -4px;
 }
 .verticalSection .contentContainer h3{
+    margin-top: 25px;
     margin-bottom: 10px;
     font-size: 1.35em;
 }
@@ -21,7 +40,7 @@
     .verticalSection{
         padding: 15px 0;
     }
-    .verticalSection .contentContainer img{
-        margin-bottom: 10px;
+    .verticalSection .contentContainer h3{
+        margin-top: 10px;
     }
 }

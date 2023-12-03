@@ -5,6 +5,11 @@
     padding-bottom: 25px;
     justify-content: space-between;
 }
+.gearSection .gearHeading{
+    text-align: center;
+    display: block;
+    width: 100%;
+}
 .gearSection p{
     margin-bottom: 10px;
 }

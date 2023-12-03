@@ -9,6 +9,19 @@
 .videoSection .contentContainer .linkContainer{
     width: 50%;
     position: relative;
+    border: 2px solid #000000;
+}
+.videoSection .contentContainer .linkContainer:before{
+    content: 'CLICK ME';
+    font-weight: bold;
+    font-size: 0.6em;
+    letter-spacing: 2px;
+    background: #000000;
+    position: absolute;
+    padding: 5px 10px;
+    color: #fff;
+    left: 0;
+    top: 0;
 }
 .videoSection .contentContainer .linkContainer .photo{
     width: 100%;
